@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 
+/*Need to install and learn the React Native VSCode Extensions
+so I can start testing this code better -.j.*/
+
 const firstTrackrApp = () => {
 
     const [yourLifeTotal, setYourLifeTotal] = useState(0);
@@ -44,6 +47,12 @@ const firstTrackrApp = () => {
     </View>
     );
 };
+
+/*Things to do: -writing this on a plane
+1. Need to make buttons to Subtract Life
+2. Need to test styles/style the app
+3. Keep learning and creating!
+*/
 
 const styles = StyleSheet.create ({
     container: {
