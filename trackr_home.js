@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 
-/*Need to install and learn the React Native VSCode Extensions
-so I can start testing this code better -.j.*/
-
 const firstTrackrApp = () => {
 
     const [yourLifeTotal, setYourLifeTotal] = useState(0);
@@ -13,31 +10,40 @@ const firstTrackrApp = () => {
     <View style={styles.container}>
         <View>
             <Text style={styles.playerOne}>{yourLifeTotal}</Text>
-            <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
 
-            <Button
+            <View style={styles.yourLifeButtons}>
+                <Button
                 onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
                 title="Tap to gain life!"
-            /*This is a button that will gain you life.
-            Need to make a button to subtract life */
-            />
+                /*This is a button that will gain you life.
+                Need to make a button to subtract life */
+                />
 
-            <Button
-                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
-                title="Tap to gain life!"
-            /*This is a button that will gain you life.
-            Need to make a button to subtract life */
-            />
+                <Button
+                    onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                    title="Tap to lose life!"
+                />
+            </View>
+            
+            <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+
+            <View style={styles.opponentsLifeButtons}>
+                <Button
+                    onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
+                    title="Tap to gain life!"
+                /*This is a button that will gain your opponent life.
+                Need to make a button to subtract life */
+                />
+
+                <Button
+                    onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                    title="Tap to lose life!"
+                />
+            </View>
         </View>
     </View>
     );
 };
-
-/*Things to do: -writing this on a plane
-1. Need to make buttons to Subtract Life
-2. Need to test styles/style the app
-3. Keep learning and creating!
-*/
 
 const styles = StyleSheet.create ({
     container: {
@@ -58,6 +64,14 @@ const styles = StyleSheet.create ({
       color: "red",
       alignSelf: "center",
   },
+
+    yourLifeButtons: {
+      flexDirection: 'row',
+  },
+
+  opponentsLifeButtons: {
+    flexDirection: 'row',
+},
 });
 
 export default firstTrackrApp;
