@@ -18,13 +18,16 @@ const firstTrackrApp = () => {
                 <Button
                 onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
                 title="Tap to gain life!"
-                /*This is a button that will gain you life.
-                Need to make a button to subtract life */
+                color='white'
                 />
-
+                    <Button
+                    style={styles.buttonPadding}
+                    title="     "
+                    />
                 <Button
                     onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
                     title="Tap to lose life!"
+                    color='white'
                 />
             </View>
             
@@ -34,13 +37,16 @@ const firstTrackrApp = () => {
                 <Button
                     onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
                     title="Tap to gain life!"
-                /*This is a button that will gain your opponent life.
-                Need to make a button to subtract life */
+                    color='white'
                 />
-
+                    <Button
+                    style={styles.buttonPadding}
+                    title="     "     
+                    />
                 <Button
                     onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
                     title="Tap to lose life!"
+                    color='white'
                 />
             </View>
         </View>
@@ -49,7 +55,7 @@ const firstTrackrApp = () => {
 };
 
 /*Things to do: -writing this on a plane
-1. Need to make buttons to Subtract Life
+1. Need to make buttons to Subtract Life -> DONE!
 2. Need to test styles/style the app
 3. Keep learning and creating!
 */
@@ -57,9 +63,10 @@ const firstTrackrApp = () => {
 const styles = StyleSheet.create ({
     container: {
         flex: 1,
-        padding: 50,
-        backgroundColor: "skyblue",
+        justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "skyblue",
+        paddingBottom: 100,
     },
 
     playerOne: {
@@ -69,18 +76,28 @@ const styles = StyleSheet.create ({
     },
 
     playerTwo: {
-      fontSize: 100,
-      color: "red",
-      alignSelf: "center",
+        fontSize: 100,
+        color: "red",
+        alignSelf: "center",
   },
 
     yourLifeButtons: {
-      flexDirection: 'row',
+        flexDirection: 'row',
+        backgroundColor: '#595959',
+        padding: 10,
+        borderRadius: 5,
   },
 
-  opponentsLifeButtons: {
-    flexDirection: 'row',
-},
+    opponentsLifeButtons: {
+        flexDirection: 'row',
+        backgroundColor: '#595959',
+        padding: 10,
+        borderRadius: 5,
+  },
+
+    buttonPadding: {
+      width: 15,
+    }
 });
 
 export default firstTrackrApp;
