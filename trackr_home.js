@@ -12,42 +12,55 @@ const firstTrackrApp = () => {
     return (
     <View style={styles.container}>
         <View>
-            <Text style={styles.playerOne}>{yourLifeTotal}</Text>
-
-            <View style={styles.yourLifeButtons}>
-                <Button
-                onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
-                title="Tap to gain life!"
-                color='white'
-                />
-                    <Button
-                    style={styles.buttonPadding}
-                    title="     "
-                    />
-                <Button
-                    onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
-                    title="Tap to lose life!"
-                    color='white'
-                />
+            <View>
+                <Text style={styles.playerOne}>{yourLifeTotal}</Text>
+                    <View>
+                        <View style={styles.flexDirectionRow}>
+                            <View style={styles.yourLifeButtons}>
+                                <Button
+                                onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
+                                title="Tap to gain life!"
+                                color='white'
+                                />
+                            </View>
+                                    <Button
+                                    style={styles.buttonPadding}
+                                    title="     "
+                                    />
+                            <View style={styles.yourLifeButtons}>
+                                <Button
+                                    onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                                    title="Tap to lose life!"
+                                    color='white'
+                                />
+                            </View>
+                        </View>
+                    </View>
             </View>
-            
-            <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
-
-            <View style={styles.opponentsLifeButtons}>
-                <Button
-                    onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
-                    title="Tap to gain life!"
-                    color='white'
-                />
-                    <Button
-                    style={styles.buttonPadding}
-                    title="     "     
-                    />
-                <Button
-                    onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
-                    title="Tap to lose life!"
-                    color='white'
-                />
+            <View>
+                <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+                    <View>
+                        <View style={styles.flexDirectionRow}>
+                            <View style={styles.opponentsLifeButtons}>
+                                <Button
+                                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
+                                title="Tap to gain life!"
+                                color='white'
+                                />
+                            </View>
+                                    <Button
+                                    style={styles.buttonPadding}
+                                    title="     "
+                                    />
+                            <View style={styles.opponentsLifeButtons}>
+                                <Button
+                                    onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                                    title="Tap to lose life!"
+                                    color='white'
+                                />
+                            </View>
+                        </View>
+                    </View>
             </View>
         </View>
     </View>
@@ -81,23 +94,25 @@ const styles = StyleSheet.create ({
         alignSelf: "center",
   },
 
-    yourLifeButtons: {
+    flexDirectionRow: {
         flexDirection: 'row',
+  },
+
+    yourLifeButtons: {
         backgroundColor: '#595959',
         padding: 10,
         borderRadius: 5,
   },
 
     opponentsLifeButtons: {
-        flexDirection: 'row',
         backgroundColor: '#595959',
         padding: 10,
         borderRadius: 5,
   },
 
     buttonPadding: {
-      width: 15,
-    }
+        width: 15,
+  },
 });
 
 export default firstTrackrApp;
