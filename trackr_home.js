@@ -13,13 +13,12 @@ const firstTrackrApp = () => {
     <View style={styles.container}>
         <View>
             <View>
-                <Text style={styles.playerOne}>{yourLifeTotal}</Text>
                     <View>
                         <View style={styles.flexDirectionRow}>
                             <View style={styles.yourLifeButtons}>
                                 <Button
-                                onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
-                                title="Tap to gain life!"
+                                onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                                title="Tap to lose life!"
                                 color='white'
                                 />
                             </View>
@@ -29,13 +28,14 @@ const firstTrackrApp = () => {
                                     />
                             <View style={styles.yourLifeButtons}>
                                 <Button
-                                    onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
-                                    title="Tap to lose life!"
-                                    color='white'
+                                onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
+                                title="Tap to gain life!"
+                                color='white'
                                 />
                             </View>
                         </View>
                     </View>
+                    <Text style={styles.playerOne}>{yourLifeTotal}</Text>
             </View>
             <View>
                 <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
@@ -54,9 +54,9 @@ const firstTrackrApp = () => {
                                     />
                             <View style={styles.opponentsLifeButtons}>
                                 <Button
-                                    onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
-                                    title="Tap to lose life!"
-                                    color='white'
+                                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                                title="Tap to lose life!"
+                                color='white'
                                 />
                             </View>
                         </View>
@@ -79,40 +79,48 @@ const styles = StyleSheet.create ({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "skyblue",
-        paddingBottom: 100,
+        paddingBottom: 50,
     },
+
+    flexDirectionRow: {
+      flexDirection: 'row',
+    },  
 
     playerOne: {
         fontSize: 100,
         color: "black",
         alignSelf: "center",
+        transform: [
+          {rotateY: '180deg'},
+          {scaleY: -1},
+        ]
     },
 
     playerTwo: {
         fontSize: 100,
         color: "red",
         alignSelf: "center",
-  },
+    },
 
-    flexDirectionRow: {
-        flexDirection: 'row',
-  },
+    buttonPadding: {
+      width: 15,
+    },
 
     yourLifeButtons: {
         backgroundColor: '#595959',
         padding: 10,
         borderRadius: 5,
-  },
+        transform: [
+          {rotateY: '180deg'},
+          {scaleY: -1},
+        ]
+    },
 
     opponentsLifeButtons: {
         backgroundColor: '#595959',
         padding: 10,
         borderRadius: 5,
-  },
-
-    buttonPadding: {
-        width: 15,
-  },
+    },
 });
 
 export default firstTrackrApp;
