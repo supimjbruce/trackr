@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
+import ChooseStartingLifePopup from '/Users/jonathanbruce/Coding/FirstExpoProject/app/chooseYourStartingLife_popup.js'
 
 /*Need to install and learn the React Native VSCode Extensions
 so I can start testing this code better -.j.*/
 
 const firstTrackrApp = () => {
 
+    const [startingLifeTotal, setStartingLifeTotal] = useState(0);
     const [yourLifeTotal, setYourLifeTotal] = useState(0);
     const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
 
+    const handleLifeUpdate = () => {
+        setYourLifeTotal(startingLifeTotal);
+        setOpponentsLifeTotal(startingLifeTotal);
+    }; /* I need to figure out how to get this code to work,
+    I need it to set the player's life totals to whatever startingLifeTotal is.*/
+
     return (
     <View style={styles.container}>
+        <ChooseStartingLifePopup />
         <View>
             <View>
                     <View>
