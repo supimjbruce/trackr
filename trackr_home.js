@@ -14,7 +14,8 @@ const firstTrackrApp = () => {
     const handleLifeUpdate = () => {
         setYourLifeTotal(startingLifeTotal);
         setOpponentsLifeTotal(startingLifeTotal);
-    };
+    }; /* I need to figure out how to get this code to work,
+    I need it to set the player's life totals to whatever startingLifeTotal is.*/
 
     return (
     <View style={styles.container}>
