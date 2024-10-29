@@ -9,11 +9,13 @@ export default function ChooseStartingLifePopup() {
     const handleLifeUpdate = () => {
         setYourLifeTotal(startingLifeTotal);
         setOpponentsLifeTotal(startingLifeTotal);
-    };
+    }; /*I still need help working on the logic of this section, to make the
+    selected life total for startingLifeTotal the starting life total for
+    both players.*/
 
     return (
-        <View>
-            <Text>What life total would you like to start at?</Text>
+        <View style={styles.container}>
+            <Text style={styles.startingLifeTotalTitleText}>What life total would you like to start at?</Text>
             <Button
                 style={styles.buttonPadding}
                 title="         "
@@ -37,8 +39,30 @@ export default function ChooseStartingLifePopup() {
     );
 }
 
+/*Things to do: -writing this on a plane
+1. Once the handleLifeUpdate function has been called, figure out how to hide/kill\
+the screen so it doesn't disturb the game.
+*/
+
 const styles = StyleSheet.create ({
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "dimgray",
+        padding: 10,
+        margin: 40,
+        transform: [
+            {rotateY: '180deg'},
+            {scaleY: -1},
+        ]
+    },
+
+    startingLifeTotalTitleText: {
+        color: "white",
+    },
+
     buttonPadding: {
-      width: 15,
+        width: 15,
     },
 });
