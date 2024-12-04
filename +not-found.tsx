@@ -1,3 +1,12 @@
+/* trackr */
+/* Error/Not Found Page [+not-found.tsx] */
+
+/*By Jonathan Bruce
+JBruce, LLC
+jbruce.design
+.j.
+- - - - - */
+
 import {View, Text, StyleSheet} from 'react-native';
 import {Stack, Link} from 'expo-router';
 
