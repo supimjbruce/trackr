@@ -23,6 +23,7 @@ export default function TabLayout() {
           backgroundColor: '#FFFADD', /* trackr - Main Dark Blue Color */
         },
         headerShadowVisible: false,
+        headerShown: false,
       }}>
       <Tabs.Screen
         name="index"
