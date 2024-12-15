@@ -7,16 +7,74 @@ jbruce.design
 .j.
 - - - - - */
 
-import {Text, View, StyleSheet} from 'react-native';
-import React from 'react';
+import {View, Text, Button, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
 
 export default function MagicGameplay() {
+
+  const [startingLifeTotal, setStartingLifeTotal] = useState(0);
+  const [yourLifeTotal, setYourLifeTotal] = useState(0);
+  const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
+
+  const handleLifeUpdate = () => {
+        setYourLifeTotal(startingLifeTotal);
+        setOpponentsLifeTotal(startingLifeTotal);
+  };
+
   return (
-
-    /* Import Magic The Gathering Life Selection Modal here. */
-
     <View style={styles.container}>
-      <Text style={styles.text}>Magic - Gameplay Screen</Text>
+        <View>
+            <View>
+                <View>
+                    <View style={styles.flexDirectionRow}>
+                        <View style={styles.yourLifeButtons}>
+                            <Button
+                            onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                            title="Tap to lose life!"
+                            color='white'
+                            />
+                        </View>
+                                <Button
+                                style={styles.buttonPadding}
+                                title="     "
+                                />
+                        <View style={styles.yourLifeButtons}>
+                            <Button
+                            onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
+                            title="Tap to gain life!"
+                            color='white'
+                            />
+                        </View>
+                    </View>
+                </View>
+                <Text style={styles.playerOne}>{yourLifeTotal}</Text>
+            </View>
+            <View>
+                <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+                    <View>
+                        <View style={styles.flexDirectionRow}>
+                            <View style={styles.opponentsLifeButtons}>
+                                <Button
+                                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
+                                title="Tap to gain life!"
+                                color='white'
+                                />
+                            </View>
+                                    <Button
+                                    style={styles.buttonPadding}
+                                    title="     "
+                                    />
+                            <View style={styles.opponentsLifeButtons}>
+                                <Button
+                                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                                title="Tap to lose life!"
+                                color='white'
+                                />
+                            </View>
+                        </View>
+                    </View>
+            </View>
+        </View>
     </View>
   );
 }
@@ -28,8 +86,46 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   text: {
     color: '#FFFADD',
+  },
+
+  flexDirectionRow: {
+    flexDirection: 'row',
+  },  
+
+  playerOne: {
+      fontSize: 100,
+      color: "#FFFADD",
+      alignSelf: "center",
+      transform: [
+        {rotateY: '180deg'},
+        {scaleY: -1},
+      ],
+  },
+
+  playerTwo: {
+      fontSize: 100,
+      color: "red",
+      alignSelf: "center",
+  },
+
+  buttonPadding: {
+    width: 15,
+  },
+
+  yourLifeButtons: {
+      backgroundColor: '#595959',
+      padding: 10,
+      borderRadius: 5,
+      transform: [{rotate: '180deg'}]
+  },
+
+  opponentsLifeButtons: {
+      backgroundColor: '#595959',
+      padding: 10,
+      borderRadius: 5,
   },
 });
 
