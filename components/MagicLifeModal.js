@@ -7,6 +7,56 @@ jbruce.design
 .j.
 - - - - - */
 
+import {View, Text, Modal, Pressable, StyleSheet} from "react-native"
+import React, { useState } from "react"
+import Ionicons from '@expo/vector-icons/Ionicons';
+
+export default function MagicLifeModal() {
+    const [modalVisible, setModalVisible] = useState(true);
+    return (
+        <Modal animationType="slide" transparent={true} visible={modalVisible}>
+            <View style={styles.modalContent}>
+                <View style={styles.titleContainer}>
+                <Text style={styles.title}>Choose your starting life total</Text>
+                <Pressable onPress={() => setModalVisible(false)}>
+                    <Ionicons name={'close-outline'} color="#FFFADD" size={30}></Ionicons>
+                </Pressable>
+                </View>
+            </View>
+        </Modal>
+    );
+};
+
+const styles = StyleSheet.create({
+  modalContent: {
+    height: "25%",
+    width: "100%",
+    backgroundColor: "#FFFADD",
+    borderTopRightRadius: 15,
+    borderTopLeftRadius: 15,
+    position: "absolute",
+    bottom: 0
+  },
+  titleContainer: {
+    height: "25%",
+    backgroundColor: "#595959",
+    borderTopRightRadius: 15,
+    borderTopLeftRadius: 15,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
+  title: {
+    color: '#FFFADD',
+    fontSize: 28,
+    fontWeight: '800',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+})
+
+
 /*TODO: Update this code with new modal logic, new life logic, and get it imported into magic.js. */
 
 /* [OLD 'chooseYourStartingLife_popup.js CODE]:
