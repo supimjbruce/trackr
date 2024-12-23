@@ -7,74 +7,73 @@ jbruce.design
 .j.
 - - - - - */
 
-import {View, Text, Button, StyleSheet} from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, Button, Modal, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import MagicLifeModal from '../../components/MagicLifeModal';
 
 export default function MagicGameplay() {
-
   const [startingLifeTotal, setStartingLifeTotal] = useState(0);
   const [yourLifeTotal, setYourLifeTotal] = useState(0);
   const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
 
   const handleLifeUpdate = () => {
-        setYourLifeTotal(startingLifeTotal);
-        setOpponentsLifeTotal(startingLifeTotal);
+    setYourLifeTotal(startingLifeTotal);
+    setOpponentsLifeTotal(startingLifeTotal);
   };
 
   return (
     <View style={styles.container}>
+      <MagicLifeModal></MagicLifeModal>
+      <View>
         <View>
-            <View>
-                <View>
-                    <View style={styles.flexDirectionRow}>
-                        <View style={styles.yourLifeButtons}>
-                            <Button
-                            onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
-                            title="Tap to lose life!"
-                            color='white'
-                            />
-                        </View>
-                                <Button
-                                style={styles.buttonPadding}
-                                title="     "
-                                />
-                        <View style={styles.yourLifeButtons}>
-                            <Button
-                            onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
-                            title="Tap to gain life!"
-                            color='white'
-                            />
-                        </View>
-                    </View>
-                </View>
-                <Text style={styles.playerOne}>{yourLifeTotal}</Text>
+          <View style={styles.flexDirectionRow}>
+            <View style={styles.yourLifeButtons}>
+              <Button /* Should I make these a Button component with Props so the code is less? */
+                onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                title="Tap to lose life!"
+                color='white'
+              />
             </View>
-            <View>
-                <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
-                    <View>
-                        <View style={styles.flexDirectionRow}>
-                            <View style={styles.opponentsLifeButtons}>
-                                <Button
-                                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
-                                title="Tap to gain life!"
-                                color='white'
-                                />
-                            </View>
-                                    <Button
-                                    style={styles.buttonPadding}
-                                    title="     "
-                                    />
-                            <View style={styles.opponentsLifeButtons}>
-                                <Button
-                                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
-                                title="Tap to lose life!"
-                                color='white'
-                                />
-                            </View>
-                        </View>
-                    </View>
+            <Button
+              style={styles.buttonPadding}
+              title="     "
+            />
+            <View style={styles.yourLifeButtons}>
+              <Button
+                onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
+                title="Tap to gain life!"
+                color='white'
+              />
             </View>
+          </View>
         </View>
+        <Text style={styles.playerOne}>{yourLifeTotal}</Text>
+      </View>
+      <View>
+        <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+        <View>
+          <View style={styles.flexDirectionRow}>
+            <View style={styles.opponentsLifeButtons}>
+              <Button
+                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
+                title="Tap to gain life!"
+                color='white'
+              />
+            </View>
+            <Button
+              style={styles.buttonPadding}
+              title="     "
+            />
+            <View style={styles.opponentsLifeButtons}>
+              <Button
+                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                title="Tap to lose life!"
+                color='white'
+              />
+            </View>
+          </View>
+        </View>
+      </View>
     </View>
   );
 }
@@ -93,22 +92,22 @@ const styles = StyleSheet.create({
 
   flexDirectionRow: {
     flexDirection: 'row',
-  },  
+  },
 
   playerOne: {
-      fontSize: 100,
-      color: "#FFFADD",
-      alignSelf: "center",
-      transform: [
-        {rotateY: '180deg'},
-        {scaleY: -1},
-      ],
+    fontSize: 100,
+    color: "#FFFADD",
+    alignSelf: "center",
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
   },
 
   playerTwo: {
-      fontSize: 100,
-      color: "red",
-      alignSelf: "center",
+    fontSize: 100,
+    color: "red",
+    alignSelf: "center",
   },
 
   buttonPadding: {
@@ -116,16 +115,16 @@ const styles = StyleSheet.create({
   },
 
   yourLifeButtons: {
-      backgroundColor: '#595959',
-      padding: 10,
-      borderRadius: 5,
-      transform: [{rotate: '180deg'}]
+    backgroundColor: '#595959',
+    padding: 10,
+    borderRadius: 5,
+    transform: [{ rotate: '180deg' }]
   },
 
   opponentsLifeButtons: {
-      backgroundColor: '#595959',
-      padding: 10,
-      borderRadius: 5,
+    backgroundColor: '#595959',
+    padding: 10,
+    borderRadius: 5,
   },
 });
 
