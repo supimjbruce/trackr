@@ -62,20 +62,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Black background with 50% opacity
+    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Black background with 50% opacity
     // Thank you Google Search AI for helping with this code :)
   },
   modalContent: {
-    height: '30%',
-    width: '75%',
-    backgroundColor: '#FFFADD',
+    maxHeight: '40%',
+    maxWidth: '85%',
+    minHeight: '25%',
+    minWidth: '30%',
+    backgroundColor: '#FFCC70',
     padding: 20,
     borderRadius: 20,
   },
   modalTitle: {
     color: '#22668D',
     fontSize: 28,
-    fontWeight: '800',
+    fontWeight: '600',
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
@@ -90,12 +92,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#8ECDDD',
     borderRadius: 23,
     padding: 20,
-    margin: 5,
+    margin: 15,
   },
   lifeButtonTitle: {
     color: '#FFFADD',
     fontSize: 56,
-    fontWeight: '900',
+    fontWeight: '1000', /* I would like this to be more Ultra, like the Figma design */
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
