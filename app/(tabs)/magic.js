@@ -23,9 +23,9 @@ export default function MagicGameplay() {
 
   return (
     <View style={styles.container}>
-      <MagicLifeModal></MagicLifeModal>
       <View>
         <View>
+          <MagicLifeModal></MagicLifeModal>
           <View style={styles.flexDirectionRow}>
             <View style={styles.yourLifeButtons}>
               <Button /* Should I make these a Button component with Props so the code is less? */
