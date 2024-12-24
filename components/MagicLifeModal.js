@@ -7,55 +7,100 @@ jbruce.design
 .j.
 - - - - - */
 
-import {View, Text, Modal, Pressable, StyleSheet} from "react-native"
+import {View, Text, Modal, Pressable, StyleSheet, TouchableOpacity} from "react-native"
 import React, { useState } from "react"
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function MagicLifeModal() {
-    const [modalVisible, setModalVisible] = useState(true);
-    return (
-        <Modal animationType="slide" transparent={true} visible={modalVisible}>
-            <View style={styles.modalContent}>
-                <View style={styles.titleContainer}>
-                <Text style={styles.title}>Choose your starting life total</Text>
-                <Pressable onPress={() => setModalVisible(false)}>
-                    <Ionicons name={'close-outline'} color="#FFFADD" size={30}></Ionicons>
+  const [modalVisible, setModalVisible] = useState(true);
+
+  const [startingLifeTotal, setStartingLifeTotal] = useState(0);
+  const [yourLifeTotal, setYourLifeTotal] = useState(0);
+  const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
+
+  const handleLifePress = () => {
+    setStartingLifeTotal(40);
+    setModalVisible(false);
+  };
+
+  return (
+    <View style={styles.container}>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>What life do you want to start at?</Text>
+            {/*<TouchableOpacity onPress={() => setModalVisible(false)}>
+                <Ionicons name={'close-outline'} color="#000" size={30}></Ionicons>
+            </TouchableOpacity>*/}
+            <View style={styles.lifeButtonRow}>
+                <Pressable onPress={handleLifePress} style={styles.lifeButton}>
+                    <Text style={styles.lifeButtonTitle}>20</Text>
                 </Pressable>
-                </View>
+                <Pressable onPress={handleLifePress} style={styles.lifeButton}>
+                    <Text style={styles.lifeButtonTitle}>40</Text>
+                </Pressable>
             </View>
-        </Modal>
-    );
-};
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Black background with 50% opacity
+    // Thank you Google Search AI for helping with this code :)
+  },
   modalContent: {
-    height: "25%",
-    width: "100%",
-    backgroundColor: "#FFFADD",
-    borderTopRightRadius: 15,
-    borderTopLeftRadius: 15,
-    position: "absolute",
-    bottom: 0
+    height: '30%',
+    width: '75%',
+    backgroundColor: '#FFFADD',
+    padding: 20,
+    borderRadius: 20,
   },
-  titleContainer: {
-    height: "25%",
-    backgroundColor: "#595959",
-    borderTopRightRadius: 15,
-    borderTopLeftRadius: 15,
-    paddingHorizontal: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between"
-  },
-  title: {
-    color: '#FFFADD',
+  modalTitle: {
+    color: '#22668D',
     fontSize: 28,
     fontWeight: '800',
     justifyContent: 'center',
     alignItems: 'center',
-  }
-})
-
+    textAlign: 'center',
+  },
+  lifeButtonRow: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  lifeButton: {
+    backgroundColor: '#8ECDDD',
+    borderRadius: 23,
+    padding: 20,
+    margin: 5,
+  },
+  lifeButtonTitle: {
+    color: '#FFFADD',
+    fontSize: 56,
+    fontWeight: '900',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+});
 
 /*TODO: Update this code with new modal logic, new life logic, and get it imported into magic.js. */
 
