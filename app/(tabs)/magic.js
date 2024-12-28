@@ -9,6 +9,8 @@ jbruce.design
 
 import { View, Text, Button, Modal, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
+import { MyContext } from '../../components/MyContext';
+import { MyProvider } from '../../components/MyContext';
 import MagicLifeModal from '../../components/MagicLifeModal';
 
 export default function MagicGameplay() {
@@ -17,64 +19,68 @@ export default function MagicGameplay() {
   const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
 
   const handleLifeUpdate = () => {
-    setYourLifeTotal(startingLifeTotal);
-    setOpponentsLifeTotal(startingLifeTotal);
+    setStartingLifeTotal(MyContext);
+    setYourLifeTotal(MyContext);
+    setOpponentsLifeTotal(MyContext);
   };
 
   return (
-    <View style={styles.container}>
-      <View>
+    <MyProvider>
+      <View style={styles.container}>
         <View>
-          <MagicLifeModal></MagicLifeModal>
-          <View style={styles.flexDirectionRow}>
-            <View style={styles.yourLifeButtons}>
-              <Button /* Should I make these a Button component with Props so the code is less? */
-                onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
-                title="Tap to lose life!"
-                color='white'
-              />
-            </View>
-            <Button
-              style={styles.buttonPadding}
-              title="     "
-            />
-            <View style={styles.yourLifeButtons}>
+          <View>
+            <MagicLifeModal/>
+            <View style={styles.flexDirectionRow}>
+              <View style={styles.yourLifeButtons}>
+                <Button /* Should I make these a Button component with Props so the code is less? */
+                  onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                  title="Tap to lose life!"
+                  color='white'
+                />
+              </View>
               <Button
-                onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
-                title="Tap to gain life!"
-                color='white'
+                style={styles.buttonPadding}
+                title="     "
               />
+              <View style={styles.yourLifeButtons}>
+                <Button
+                  onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
+                  title="Tap to gain life!"
+                  color='white'
+                />
+              </View>
+            </View>
+          </View>
+          <Text>Value from Context: {startingLifeTotal}</Text>
+          <Text style={styles.playerOne}>{yourLifeTotal}</Text>
+        </View>
+        <View>
+          <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+          <View>
+            <View style={styles.flexDirectionRow}>
+              <View style={styles.opponentsLifeButtons}>
+                <Button
+                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
+                  title="Tap to gain life!"
+                  color='white'
+                />
+              </View>
+              <Button
+                style={styles.buttonPadding}
+                title="     "
+              />
+              <View style={styles.opponentsLifeButtons}>
+                <Button
+                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                  title="Tap to lose life!"
+                  color='white'
+                />
+              </View>
             </View>
           </View>
         </View>
-        <Text style={styles.playerOne}>{yourLifeTotal}</Text>
       </View>
-      <View>
-        <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
-        <View>
-          <View style={styles.flexDirectionRow}>
-            <View style={styles.opponentsLifeButtons}>
-              <Button
-                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
-                title="Tap to gain life!"
-                color='white'
-              />
-            </View>
-            <Button
-              style={styles.buttonPadding}
-              title="     "
-            />
-            <View style={styles.opponentsLifeButtons}>
-              <Button
-                onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
-                title="Tap to lose life!"
-                color='white'
-              />
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
+    </MyProvider>
   );
 }
 
