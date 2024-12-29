@@ -31,49 +31,42 @@ export default function MagicGameplay() {
           <View>
             <MagicLifeModal/>
             <View style={styles.flexDirectionRow}>
-              <View style={styles.yourLifeButtons}>
-                <Button /* Should I make these a Button component with Props so the code is less? */
-                  onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
-                  title="Tap to lose life!"
-                  color='white'
-                />
-              </View>
-              <Button
-                style={styles.buttonPadding}
-                title="     "
-              />
-              <View style={styles.yourLifeButtons}>
+            <View style={styles.opponentPlusButton}>
                 <Button
-                  onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
-                  title="Tap to gain life!"
-                  color='white'
+                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
+                  title="+"
+                  color='#FFFADD'
+                /> {/*Figure out a different way to make a button element so I can change fontSize and Weight to make it more
+                  like the Figma design, like react-native-elemements, etc.*/}
+              </View>
+              <View style={styles.opponentMinusButton}>
+                <Button /* Should I make these a Button component with Props so the code is less? */
+                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                  title="-"
+                  color='#FFFADD'
                 />
               </View>
             </View>
           </View>
-          <Text>Value from Context: {startingLifeTotal}</Text>
-          <Text style={styles.playerOne}>{yourLifeTotal}</Text>
-        </View>
-        <View>
           <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+        </View>
+        <Text>Value from Context: {startingLifeTotal}</Text>
+        <View>
+          <Text style={styles.playerOne}>{yourLifeTotal}</Text>
           <View>
             <View style={styles.flexDirectionRow}>
-              <View style={styles.opponentsLifeButtons}>
+              <View style={styles.yourMinusButton}>
                 <Button
-                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
-                  title="Tap to gain life!"
-                  color='white'
+                  onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                  title="-"
+                  color='#FFFADD'
                 />
               </View>
-              <Button
-                style={styles.buttonPadding}
-                title="     "
-              />
-              <View style={styles.opponentsLifeButtons}>
+              <View style={styles.yourPlusButton}>
                 <Button
-                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
-                  title="Tap to lose life!"
-                  color='white'
+                  onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
+                  title="+"
+                  color='#FFFADD'
                 />
               </View>
             </View>
@@ -104,33 +97,80 @@ const styles = StyleSheet.create({
     fontSize: 100,
     color: "#FFFADD",
     alignSelf: "center",
-    transform: [
-      { rotateY: '-180deg' },
-      { scaleY: -1 },
-    ],
+    padding: 30,
+    marginTop: 30,
+    marginBottom: 30,
+    backgroundColor: '#8ECDDD',
+    borderRadius: 23,
+    width: 192,
+    height: 155,
+    textAlign: 'center',
   },
 
   playerTwo: {
     fontSize: 100,
-    color: "red",
+    color: "#FFFADD",
     alignSelf: "center",
+    padding: 30,
+    marginTop: 30,
+    marginBottom: 30,
+    backgroundColor: '#8ECDDD',
+    borderRadius: 23,
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
+    width: 192,
+    height: 155,
+    textAlign: 'center',
   },
 
   buttonPadding: {
     width: 15,
   },
 
-  yourLifeButtons: {
-    backgroundColor: '#595959',
+  yourPlusButton: {
+    backgroundColor: '#8ECDDD',
     padding: 10,
     borderRadius: 5,
-    transform: [{ rotate: '180deg' }]
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
+    marginLeft: 50,
   },
 
-  opponentsLifeButtons: {
-    backgroundColor: '#595959',
+  yourMinusButton: {
+    backgroundColor: '#8ECDDD',
     padding: 10,
     borderRadius: 5,
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
+    marginRight: 50,
+  },
+
+  opponentPlusButton: {
+    backgroundColor: '#8ECDDD',
+    padding: 10,
+    borderRadius: 5,
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
+    marginRight: 50,
+  },
+
+  opponentMinusButton: {
+    backgroundColor: '#8ECDDD',
+    padding: 10,
+    borderRadius: 5,
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
+    marginLeft: 50,
   },
 });
 
