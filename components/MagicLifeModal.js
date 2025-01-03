@@ -7,8 +7,8 @@ jbruce.design
 .j.
 - - - - - */
 
-import {View, Text, Modal, Pressable, StyleSheet, TouchableOpacity} from "react-native"
-import React, { useState } from "react"
+import {View, Text, Modal, Pressable, StyleSheet, TouchableOpacity} from "react-native";
+import React, { useState } from "react";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function MagicLifeModal() {
@@ -18,7 +18,12 @@ export default function MagicLifeModal() {
   const [yourLifeTotal, setYourLifeTotal] = useState(0);
   const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
 
-  const handleLifePress = () => {
+  const handleLifePress20 = () => {
+    setStartingLifeTotal(20);
+    setModalVisible(false);
+  };
+
+  const handleLifePress40 = () => {
     setStartingLifeTotal(40);
     setModalVisible(false);
   };
@@ -38,10 +43,10 @@ export default function MagicLifeModal() {
                 <Ionicons name={'close-outline'} color="#000" size={30}></Ionicons>
             </TouchableOpacity>*/}
             <View style={styles.lifeButtonRow}>
-                <Pressable onPress={handleLifePress} style={styles.lifeButton}>
+                <Pressable onPress={handleLifePress20} style={styles.lifeButton}>
                     <Text style={styles.lifeButtonTitle}>20</Text>
                 </Pressable>
-                <Pressable onPress={handleLifePress} style={styles.lifeButton}>
+                <Pressable onPress={handleLifePress40} style={styles.lifeButton}>
                     <Text style={styles.lifeButtonTitle}>40</Text>
                 </Pressable>
             </View>
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
   modalContent: {
     maxHeight: '40%',
     maxWidth: '85%',
-    minHeight: '25%',
+    minHeight: '30%',
     minWidth: '30%',
     backgroundColor: '#FFCC70',
     padding: 20,
@@ -97,7 +102,7 @@ const styles = StyleSheet.create({
   lifeButtonTitle: {
     color: '#FFFADD',
     fontSize: 56,
-    fontWeight: '1000', /* I would like this to be more Ultra, like the Figma design */
+    fontWeight: '900', /* I would like this to be more Ultra, like the Figma design */
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
