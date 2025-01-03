@@ -11,8 +11,24 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 
 export default function MagicGameplay() {
-  const [yourLifeTotal, setYourLifeTotal] = useState(0);
-  const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
+  const [yourLoreTotal, setYourLoreTotal] = useState(0);
+  const [opponentsLoreTotal, setOpponentsLoreTotal] = useState(0);
+
+  const plusYourLore = () => {
+    setYourLoreTotal((previousStartingLoreTotal) => Math.min(20, previousStartingLoreTotal + 1));
+  };
+
+  const minusYourLore = () => {
+    setYourLoreTotal((previousStartingLoreTotal) => Math.max(0, previousStartingLoreTotal - 1));
+  };
+
+  const plusOponenetsLore = () => {
+    setOpponentsLoreTotal((previousStartingLoreTotal) => Math.min(20, previousStartingLoreTotal + 1));
+  };
+
+  const minusOpponenetsLore = () => {
+    setOpponentsLoreTotal((previousStartingLoreTotal) => Math.max(0, previousStartingLoreTotal - 1));
+  };
 
   return (
       <View style={styles.container}>
@@ -21,37 +37,36 @@ export default function MagicGameplay() {
             <View style={styles.flexDirectionRow}>
             <View style={styles.opponentPlusButton}>
                 <Button
-                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
+                  onPress={plusOponenetsLore}
                   title="+"
                   color='#8ECDDD'
-                /> {/*Figure out a different way to make a button element so I can change fontSize and Weight to make it more
-                  like the Figma design, like react-native-elemements, etc.*/}
+                />
               </View>
               <View style={styles.opponentMinusButton}>
-                <Button /* Should I make these a Button component with Props so the code is less? */
-                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                <Button
+                  onPress={minusOpponenetsLore}
                   title="-"
                   color='#8ECDDD'
                 />
               </View>
             </View>
           </View>
-          <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+          <Text style={styles.playerTwo}>{opponentsLoreTotal}</Text>
         </View>
         <View>
-          <Text style={styles.playerOne}>{yourLifeTotal}</Text>
+          <Text style={styles.playerOne}>{yourLoreTotal}</Text>
           <View>
             <View style={styles.flexDirectionRow}>
               <View style={styles.yourMinusButton}>
                 <Button
-                  onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                  onPress={minusYourLore}
                   title="-"
                   color='#8ECDDD'
                 />
               </View>
               <View style={styles.yourPlusButton}>
                 <Button
-                  onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
+                  onPress={plusYourLore}
                   title="+"
                   color='#8ECDDD'
                 />
@@ -81,6 +96,7 @@ const styles = StyleSheet.create({
 
   playerOne: {
     fontSize: 100,
+    fontWeight: 900,
     color: "#8ECDDD",
     alignSelf: "center",
     padding: 30,
@@ -91,10 +107,13 @@ const styles = StyleSheet.create({
     width: 192,
     height: 155,
     textAlign: 'center',
+    textAlignVertical: 'center',
+    fontVariant: ['tabular-nums'],
   },
 
   playerTwo: {
     fontSize: 100,
+    fontWeight: 900,
     color: "#8ECDDD",
     alignSelf: "center",
     padding: 30,
@@ -102,24 +121,26 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     backgroundColor: '#FFFADD',
     borderRadius: 23,
+    width: 192,
+    height: 155,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontVariant: ['tabular-nums'],
     transform: [
       { rotateY: '-180deg' },
       { scaleY: -1 },
     ],
-    width: 192,
-    height: 155,
-    textAlign: 'center',
   },
 
-  buttonPadding: {
+  /*buttonPadding: {
     width: 15,
-  },
+  },*/
 
-  yourLifeButtons: {
+  /*yourLifeButtons: {
     backgroundColor: '#FFFADD',
     padding: 10,
     borderRadius: 5,
-  },
+  },*/
 
   yourPlusButton: {
     backgroundColor: '#FFFADD',
