@@ -24,24 +24,31 @@ export default function MagicGameplay() {
     setOpponentsLifeTotal(MyContext);
   };
 
+  const minusYourLife = () => {
+    setYourLifeTotal((previousStartingLifeTotal) => Math.max(0, previousStartingLifeTotal - 1));
+  };
+
+  const minusOpponenetsLife = () => {
+    setOpponentsLifeTotal((previousStartingLifeTotal) => Math.max(0, previousStartingLifeTotal - 1));
+  };
+
   return (
     <MyProvider>
       <View style={styles.container}>
         <View>
           <View>
-            <MagicLifeModal/>
             <View style={styles.flexDirectionRow}>
+            <MagicLifeModal />
             <View style={styles.opponentPlusButton}>
                 <Button
                   onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
                   title="+"
                   color='#FFFADD'
-                /> {/*Figure out a different way to make a button element so I can change fontSize and Weight to make it more
-                  like the Figma design, like react-native-elemements, etc.*/}
+                />
               </View>
               <View style={styles.opponentMinusButton}>
-                <Button /* Should I make these a Button component with Props so the code is less? */
-                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal - 1)}
+                <Button
+                  onPress={minusOpponenetsLife}
                   title="-"
                   color='#FFFADD'
                 />
@@ -57,7 +64,7 @@ export default function MagicGameplay() {
             <View style={styles.flexDirectionRow}>
               <View style={styles.yourMinusButton}>
                 <Button
-                  onPress={() => setYourLifeTotal(yourLifeTotal - 1)}
+                  onPress={minusYourLife}
                   title="-"
                   color='#FFFADD'
                 />
@@ -83,6 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#22668D',
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 0,
   },
 
   text: {
@@ -95,6 +103,7 @@ const styles = StyleSheet.create({
 
   playerOne: {
     fontSize: 100,
+    fontWeight: 900,
     color: "#FFFADD",
     alignSelf: "center",
     padding: 30,
@@ -105,10 +114,13 @@ const styles = StyleSheet.create({
     width: 192,
     height: 155,
     textAlign: 'center',
+    textAlignVertical: 'center',
+    fontVariant: ['tabular-nums'],
   },
 
   playerTwo: {
     fontSize: 100,
+    fontWeight: 900,
     color: "#FFFADD",
     alignSelf: "center",
     padding: 30,
@@ -116,18 +128,20 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     backgroundColor: '#8ECDDD',
     borderRadius: 23,
+    width: 192,
+    height: 155,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontVariant: ['tabular-nums'],
     transform: [
       { rotateY: '-180deg' },
       { scaleY: -1 },
     ],
-    width: 192,
-    height: 155,
-    textAlign: 'center',
   },
 
-  buttonPadding: {
+  /*buttonPadding: {
     width: 15,
-  },
+  },*/
 
   yourPlusButton: {
     backgroundColor: '#8ECDDD',
