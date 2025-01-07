@@ -7,7 +7,7 @@ jbruce.design
 .j.
 - - - - - */
 
-import { View, Text, Button, Modal, StyleSheet } from 'react-native';
+import { View, Text, Button, Modal, StyleSheet, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import { MyContext } from '../../components/MyContext';
 import { MyProvider } from '../../components/MyContext';
@@ -39,47 +39,32 @@ export default function MagicGameplay() {
           <View>
             <View style={styles.flexDirectionRow}>
             <MagicLifeModal />
-            <View style={styles.opponentPlusButton}>
-                <Button
-                  onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)}
-                  title="+"
-                  color='#FFFADD'
-                />
-              </View>
-              <View style={styles.opponentMinusButton}>
-                <Button
-                  onPress={minusOpponenetsLife}
-                  title="-"
-                  color='#FFFADD'
-                />
-              </View>
+              <Pressable onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)} style={styles.opponentPlusButton}>
+                <Text style={styles.buttonTextStyling}>+</Text>
+              </Pressable>
+              <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+              <Pressable onPress={minusOpponenetsLife} style={styles.opponentMinusButton}>
+                <Text style={styles.buttonTextStyling}>-</Text>
+              </Pressable>
             </View>
           </View>
-          <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
         </View>
         <Text>Value from Context: {startingLifeTotal}</Text>
         <View>
-          <Text style={styles.playerOne}>{yourLifeTotal}</Text>
           <View>
-            <View style={styles.flexDirectionRow}>
-              <View style={styles.yourMinusButton}>
-                <Button
-                  onPress={minusYourLife}
-                  title="-"
-                  color='#FFFADD'
-                />
-              </View>
-              <View style={styles.yourPlusButton}>
-                <Button
-                  onPress={() => setYourLifeTotal(yourLifeTotal + 1)}
-                  title="+"
-                  color='#FFFADD'
-                />
-              </View>
+          <View style={styles.flexDirectionRow}>
+            <MagicLifeModal />
+              <Pressable onPress={minusYourLife} style={styles.yourMinusButton}>
+                <Text style={styles.buttonTextStyling}>-</Text>
+              </Pressable>
+              <Text style={styles.playerOne}>{yourLifeTotal}</Text>
+              <Pressable onPress={() => setYourLifeTotal(yourLifeTotal + 1)} style={styles.yourPlusButton}>
+                <Text style={styles.buttonTextStyling}>+</Text>
+              </Pressable>
             </View>
           </View>
+          </View>
         </View>
-      </View>
     </MyProvider>
   );
 }
@@ -99,6 +84,8 @@ const styles = StyleSheet.create({
 
   flexDirectionRow: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   playerOne: {
@@ -119,6 +106,10 @@ const styles = StyleSheet.create({
   },
 
   playerTwo: {
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
     fontSize: 100,
     fontWeight: 900,
     color: "#FFFADD",
@@ -133,39 +124,41 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
     fontVariant: ['tabular-nums'],
-    transform: [
-      { rotateY: '-180deg' },
-      { scaleY: -1 },
-    ],
   },
 
   /*buttonPadding: {
     width: 15,
   },*/
 
+  buttonTextStyling: {
+    fontSize: 24,
+    fontWeight: 900,
+    color: '#FFFADD',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+
   yourPlusButton: {
+    height: 50,
+    width: 50,
     backgroundColor: '#8ECDDD',
     padding: 10,
     borderRadius: 5,
-    transform: [
-      { rotateY: '-180deg' },
-      { scaleY: -1 },
-    ],
-    marginLeft: 50,
+    marginLeft: 25,
   },
 
   yourMinusButton: {
+    height: 50,
+    width: 50,
     backgroundColor: '#8ECDDD',
     padding: 10,
     borderRadius: 5,
-    transform: [
-      { rotateY: '-180deg' },
-      { scaleY: -1 },
-    ],
-    marginRight: 50,
+    marginRight: 25,
   },
 
   opponentPlusButton: {
+    height: 50,
+    width: 50,
     backgroundColor: '#8ECDDD',
     padding: 10,
     borderRadius: 5,
@@ -173,10 +166,12 @@ const styles = StyleSheet.create({
       { rotateY: '-180deg' },
       { scaleY: -1 },
     ],
-    marginRight: 50,
+    marginRight: 25,
   },
 
   opponentMinusButton: {
+    height: 50,
+    width: 50,
     backgroundColor: '#8ECDDD',
     padding: 10,
     borderRadius: 5,
@@ -184,7 +179,7 @@ const styles = StyleSheet.create({
       { rotateY: '-180deg' },
       { scaleY: -1 },
     ],
-    marginLeft: 50,
+    marginLeft: 25,
   },
 });
 
