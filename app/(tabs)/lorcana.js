@@ -7,10 +7,10 @@ jbruce.design
 .j.
 - - - - - */
 
-import { View, Text, Button, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
+import React, {useState} from 'react';
 
-export default function MagicGameplay() {
+export default function LorcanaGameplay() {
   const [yourLoreTotal, setYourLoreTotal] = useState(0);
   const [opponentsLoreTotal, setOpponentsLoreTotal] = useState(0);
 
@@ -35,46 +35,30 @@ export default function MagicGameplay() {
         <View>
           <View>
             <View style={styles.flexDirectionRow}>
-            <View style={styles.opponentPlusButton}>
-                <Button
-                  onPress={plusOponenetsLore}
-                  title="+"
-                  color='#8ECDDD'
-                />
-              </View>
-              <View style={styles.opponentMinusButton}>
-                <Button
-                  onPress={minusOpponenetsLore}
-                  title="-"
-                  color='#8ECDDD'
-                />
-              </View>
+              <Pressable onPress={plusOponenetsLore} style={styles.opponentPlusButton}>
+                <Text style={styles.buttonTextStyling}>+</Text>
+              </Pressable>
+              <Text style={styles.playerTwo}>{opponentsLoreTotal}</Text>
+              <Pressable onPress={minusOpponenetsLore} style={styles.opponentMinusButton}>
+                <Text style={styles.buttonTextStyling}>-</Text>
+              </Pressable>
             </View>
           </View>
-          <Text style={styles.playerTwo}>{opponentsLoreTotal}</Text>
         </View>
         <View>
-          <Text style={styles.playerOne}>{yourLoreTotal}</Text>
           <View>
-            <View style={styles.flexDirectionRow}>
-              <View style={styles.yourMinusButton}>
-                <Button
-                  onPress={minusYourLore}
-                  title="-"
-                  color='#8ECDDD'
-                />
-              </View>
-              <View style={styles.yourPlusButton}>
-                <Button
-                  onPress={plusYourLore}
-                  title="+"
-                  color='#8ECDDD'
-                />
-              </View>
+          <View style={styles.flexDirectionRow}>
+              <Pressable onPress={minusYourLore} style={styles.yourMinusButton}>
+                <Text style={styles.buttonTextStyling}>-</Text>
+              </Pressable>
+              <Text style={styles.playerOne}>{yourLoreTotal}</Text>
+              <Pressable onPress={plusYourLore} style={styles.yourPlusButton}>
+                <Text style={styles.buttonTextStyling}>+</Text>
+              </Pressable>
             </View>
           </View>
+          </View>
         </View>
-      </View>
   );
 }
 
@@ -84,14 +68,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFCC70',
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 0,
   },
 
-  /*text: {
+  text: {
     color: '#FFFADD',
-  },*/
+  },
 
   flexDirectionRow: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   playerOne: {
@@ -112,6 +99,10 @@ const styles = StyleSheet.create({
   },
 
   playerTwo: {
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
     fontSize: 100,
     fontWeight: 900,
     color: "#8ECDDD",
@@ -126,45 +117,41 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
     fontVariant: ['tabular-nums'],
-    transform: [
-      { rotateY: '-180deg' },
-      { scaleY: -1 },
-    ],
   },
 
   /*buttonPadding: {
     width: 15,
   },*/
 
-  /*yourLifeButtons: {
-    backgroundColor: '#FFFADD',
-    padding: 10,
-    borderRadius: 5,
-  },*/
+  buttonTextStyling: {
+    fontSize: 24,
+    fontWeight: 900,
+    color: '#8ECDDD',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
 
   yourPlusButton: {
+    height: 50,
+    width: 50,
     backgroundColor: '#FFFADD',
     padding: 10,
     borderRadius: 5,
-    transform: [
-      { rotateY: '-180deg' },
-      { scaleY: -1 },
-    ],
-    marginLeft: 50,
+    marginLeft: 25,
   },
 
   yourMinusButton: {
+    height: 50,
+    width: 50,
     backgroundColor: '#FFFADD',
     padding: 10,
     borderRadius: 5,
-    transform: [
-      { rotateY: '-180deg' },
-      { scaleY: -1 },
-    ],
-    marginRight: 50,
+    marginRight: 25,
   },
 
   opponentPlusButton: {
+    height: 50,
+    width: 50,
     backgroundColor: '#FFFADD',
     padding: 10,
     borderRadius: 5,
@@ -172,10 +159,12 @@ const styles = StyleSheet.create({
       { rotateY: '-180deg' },
       { scaleY: -1 },
     ],
-    marginRight: 50,
+    marginRight: 25,
   },
 
   opponentMinusButton: {
+    height: 50,
+    width: 50,
     backgroundColor: '#FFFADD',
     padding: 10,
     borderRadius: 5,
@@ -183,6 +172,6 @@ const styles = StyleSheet.create({
       { rotateY: '-180deg' },
       { scaleY: -1 },
     ],
-    marginLeft: 50,
+    marginLeft: 25,
   },
 });
