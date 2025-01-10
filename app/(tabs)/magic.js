@@ -7,10 +7,10 @@ jbruce.design
 .j.
 - - - - - */
 
-import { View, Text, Button, Modal, StyleSheet, Pressable } from 'react-native';
-import React, { useState } from 'react';
-import { MyContext } from '../../components/MyContext';
-import { MyProvider } from '../../components/MyContext';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
+import React, {useState} from 'react';
+import {MyContext} from '../../components/MyContext';
+import {MyProvider} from '../../components/MyContext';
 import MagicLifeModal from '../../components/MagicLifeModal';
 
 export default function MagicGameplay() {
