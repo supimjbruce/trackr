@@ -36,6 +36,7 @@ export default function MagicLifeModal() {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
+      {/*<Text>Value from context: {startingLifeTotal}</Text> <- Need to fix this context */}
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>What life do you want to start at?</Text>
