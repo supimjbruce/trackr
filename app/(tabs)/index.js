@@ -7,14 +7,16 @@ jbruce.design
 .j.
 - - - - - */
 
-import {Text, View, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import WelcomeModal from '../../components/WelcomeModal';
 
 export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.introContainer}>
+        <WelcomeModal />
         <Text style={styles.title}>Hello</Text>
         <Text style={styles.subTitle}> Welcome to <Text style={{ fontWeight: 'bold' }}>Trackr!</Text></Text>
       </View>
@@ -22,9 +24,10 @@ export default function Index() {
       <View style={styles.footer}>
         <Text style={styles.footerText}>Select a card game to get started <Ionicons name={'arrow-down-sharp'} color={'22668D'} size={24}></Ionicons></Text>
       </View>
-    </View> /* ^ Want to figure out how to better space the arrow so it's more in line with the text. */
+    </View>
   );
 }
+/* ^ Want to figure out how to better space the arrow so it's more in line with the text. */
 /* Figure out how to add inline padding to the V/arrow, or make the 'v' an Arrow. */
 
 const styles = StyleSheet.create({
