@@ -53,7 +53,6 @@ export default function MagicGameplay() {
         <View>
           <View>
           <View style={styles.flexDirectionRow}>
-            <MagicLifeModal />
               <Pressable onPress={minusYourLife} style={styles.yourMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
