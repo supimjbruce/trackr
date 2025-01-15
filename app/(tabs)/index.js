@@ -17,8 +17,8 @@ export default function Index() {
     <View style={styles.container}>
       <View style={styles.introContainer}>
         <WelcomeModal />
-        <Text style={styles.title}>Hello</Text>
-        <Text style={styles.subTitle}> Welcome to <Text style={{ fontWeight: 'bold' }}>Trackr!</Text></Text>
+        <Text style={styles.title}>trackr</Text>
+        <Text style={styles.subTitle}> Made by <Text style={{ fontWeight: 'medium' }}>JBruce</Text></Text>
       </View>
 
       <View style={styles.footer}>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 
   title: {
     color: '#FFFADD',
-    fontSize: 64,
+    fontSize: 96,
     fontWeight: '800',
     justifyContent: 'center',
     alignItems: 'center',
@@ -52,8 +52,7 @@ const styles = StyleSheet.create({
 
   subTitle: {
     color: '#FFFADD',
-    fontSize: 32,
-    fontWeight: 'medium',
+    fontSize: 22,
     justifyContent: 'center',
     alignItems: 'center',
   },
