@@ -42,7 +42,9 @@ export default function MagicGameplay() {
               <Pressable onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)} style={styles.opponentPlusButton}>
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
-              <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+              <View style={styles.lifeTotalCentered}>
+                <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+              </View>
               <Pressable onPress={minusOpponenetsLife} style={styles.opponentMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
     fontWeight: 900,
     color: "#FFFADD",
     alignSelf: "center",
-    padding: 30,
+    padding: 15,
     marginTop: 30,
     marginBottom: 30,
     backgroundColor: '#8ECDDD',
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     fontWeight: 900,
     color: "#FFFADD",
     alignSelf: "center",
-    padding: 30,
+    padding: 15,
     marginTop: 30,
     marginBottom: 30,
     backgroundColor: '#8ECDDD',
@@ -123,6 +125,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
     fontVariant: ['tabular-nums'],
+  },
+
+  lifeTotalCentered: {
+    alignItems: 'center',
+    justifyContent: 'center',
+
   },
 
   /*buttonPadding: {
