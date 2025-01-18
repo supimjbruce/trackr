@@ -8,27 +8,47 @@ jbruce.design
 - - - - - */
 
 import {View, Text, StyleSheet, Pressable} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 export default function LorcanaGameplay() {
   const [yourLoreTotal, setYourLoreTotal] = useState(0);
   const [opponentsLoreTotal, setOpponentsLoreTotal] = useState(0);
 
   const plusYourLore = () => {
-    setYourLoreTotal((previousStartingLoreTotal) => Math.min(20, previousStartingLoreTotal + 1));
+    setYourLoreTotal((yourPreviousLoreTotal) => Math.min(20, yourPreviousLoreTotal + 1));
   };
 
   const minusYourLore = () => {
-    setYourLoreTotal((previousStartingLoreTotal) => Math.max(0, previousStartingLoreTotal - 1));
+    setYourLoreTotal((yourPreviousLoreTotal) => Math.max(0, yourPreviousLoreTotal - 1));
   };
 
   const plusOponenetsLore = () => {
-    setOpponentsLoreTotal((previousStartingLoreTotal) => Math.min(20, previousStartingLoreTotal + 1));
+    setOpponentsLoreTotal((previousOpponenetLoreTotal) => Math.min(20, previousOpponenetLoreTotal + 1));
   };
 
   const minusOpponenetsLore = () => {
-    setOpponentsLoreTotal((previousStartingLoreTotal) => Math.max(0, previousStartingLoreTotal - 1));
+    setOpponentsLoreTotal((previousOpponenetLoreTotal) => Math.max(0, previousOpponenetLoreTotal - 1));
   };
+
+  const [yourLoreTextColor, setYourLoreTextColor] = useState('');
+  const [opponentsLoreTextColor, setOpponentsLoreTextColor] = useState('');
+  const winningLoreNumber = 20;  
+
+  useEffect(() => {
+    if (opponentsLoreTotal == winningLoreNumber) {
+      setOpponentsLoreTextColor('green');
+    } else {
+      setOpponentsLoreTextColor('#8ECDDD');
+    }
+  }, [opponentsLoreTotal]);
+ 
+  useEffect(() => {
+    if (yourLoreTotal == winningLoreNumber) {
+      setYourLoreTextColor('green');
+    } else {
+      setYourLoreTextColor('#8ECDDD');
+    }
+  }, [yourLoreTotal]);
 
   return (
       <View style={styles.container}>
@@ -38,7 +58,7 @@ export default function LorcanaGameplay() {
               <Pressable onPress={plusOponenetsLore} style={styles.opponentPlusButton}>
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
-              <Text style={styles.playerTwo}>{opponentsLoreTotal}</Text>
+              <Text style={[styles.playerTwo, {color: opponentsLoreTextColor}]}>{opponentsLoreTotal}</Text>
               <Pressable onPress={minusOpponenetsLore} style={styles.opponentMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
@@ -51,7 +71,7 @@ export default function LorcanaGameplay() {
               <Pressable onPress={minusYourLore} style={styles.yourMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
-              <Text style={styles.playerOne}>{yourLoreTotal}</Text>
+              <Text style={[styles.playerOne, {color: yourLoreTextColor}]}>{yourLoreTotal}</Text>
               <Pressable onPress={plusYourLore} style={styles.yourPlusButton}>
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
@@ -86,7 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: 900,
     color: "#8ECDDD",
     alignSelf: "center",
-    padding: 30,
+    padding: 15,
     marginTop: 30,
     marginBottom: 30,
     backgroundColor: '#FFFADD',
@@ -107,7 +127,7 @@ const styles = StyleSheet.create({
     fontWeight: 900,
     color: "#8ECDDD",
     alignSelf: "center",
-    padding: 30,
+    padding: 15,
     marginTop: 30,
     marginBottom: 30,
     backgroundColor: '#FFFADD',
