@@ -17,6 +17,8 @@ const [isModalVisible, setModalVisible] = useState(true);
             <View style={styles.modalContent} w>
               <Text style={styles.modalTitle}>trackr</Text>
               <Text style={styles.modalParagraphTitle}>Welcome to trackr, a simple app for tracking<br></br>life totals for trading card games.</Text>
+              <br></br>
+              <Text style={styles.modalParagraphTitle}><b>Current support for:</b><br></br>Magic The Gathering<br></br>Lorcana</Text>
               <View style={styles.buttonAlign}>
                 <Pressable style={styles.closeButton} onPress={() => setModalVisible(false)}>
                   <Text style={styles.closeButtonText}>Close</Text>
