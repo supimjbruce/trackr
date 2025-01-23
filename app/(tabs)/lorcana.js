@@ -32,11 +32,16 @@ export default function LorcanaGameplay() {
 
   const [yourLoreTextColor, setYourLoreTextColor] = useState('');
   const [opponentsLoreTextColor, setOpponentsLoreTextColor] = useState('');
-  const winningLoreNumber = 20;  
+  const winningLoreNumber = 20;
+  const [showYourWinText, setShowYourWinText] = useState(false);
+  const [showOpponentWinText, setShowOpponentWinText] = useState(false);
 
   useEffect(() => {
     if (opponentsLoreTotal == winningLoreNumber) {
       setOpponentsLoreTextColor('green');
+      setYourLoreTextColor('red');
+      const didYouWin = true;
+      setShowOpponentWinText(didYouWin);
     } else {
       setOpponentsLoreTextColor('#8ECDDD');
     }
@@ -45,10 +50,18 @@ export default function LorcanaGameplay() {
   useEffect(() => {
     if (yourLoreTotal == winningLoreNumber) {
       setYourLoreTextColor('green');
+      setOpponentsLoreTextColor('red');
+      const didYouWin = true;
+      setShowYourWinText(didYouWin);
     } else {
       setYourLoreTextColor('#8ECDDD');
     }
   }, [yourLoreTotal]);
+
+  const resetTheGame = () => {
+    setYourLoreTotal();
+    setOpponentsLoreTotal();
+  };
 
   return (
       <View style={styles.container}>
@@ -64,6 +77,22 @@ export default function LorcanaGameplay() {
               </Pressable>
             </View>
           </View>
+        </View>
+        <View> {/* OPPONENT WINS WIN */ }
+          {showOpponentWinText && (
+            <View>
+              <button onPress={resetTheGame}>Reset the game</button>
+              <Text style={styles.opponentWonText}>Congratulations! You won the game!</Text>
+            </View>
+          )}
+        </View>
+        <View> {/* YOU WIN */ }
+          {showYourWinText && (
+            <View>
+              <Text style={styles.youWonText}><b>Congratulations!</b> You won the game!</Text>
+              <button onPress={resetTheGame}>Reset the game</button>
+            </View>
+          )}
         </View>
         <View>
           <View>
@@ -193,5 +222,27 @@ const styles = StyleSheet.create({
       { scaleY: -1 },
     ],
     marginLeft: 25,
+  },
+
+  youWonText: {
+    fontSize: 24,
+    fontWeight: 400,
+    color: 'black',
+    alignSelf: "center",
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+
+  opponentWonText: {
+    transform: [
+      { rotateY: '-180deg' },
+      { scaleY: -1 },
+    ],
+    fontSize: 24,
+    fontWeight: 400,
+    color: 'black',
+    alignSelf: "center",
+    textAlign: 'center',
+    textAlignVertical: 'center',
   },
 });
