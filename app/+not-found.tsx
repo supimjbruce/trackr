@@ -8,6 +8,7 @@ jbruce.design
 - - - - - */
 
 import {View, Text, StyleSheet} from 'react-native';
+import React from 'react';
 import {Stack, Link} from 'expo-router';
 
 export default function NotFoundScreen() {
