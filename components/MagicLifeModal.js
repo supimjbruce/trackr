@@ -39,7 +39,7 @@ export default function MagicLifeModal() {
       {/*<Text>Value from context: {startingLifeTotal}</Text> <- Need to fix this context */}
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>What life do you want to start at?</Text>
+            <Text style={styles.modalTitle}>What life do you<br></br>want to start at?</Text>
             {/*<TouchableOpacity onPress={() => setModalVisible(false)}>
                 <Ionicons name={'close-outline'} color="#000" size={30}></Ionicons>
             </TouchableOpacity>*/}
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   modalTitle: {
+    fontFamily: 'Poppins-SemiBold',
     color: '#22668D',
     fontSize: 28,
     fontWeight: '600',
