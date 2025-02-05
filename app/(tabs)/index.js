@@ -41,7 +41,7 @@ export default function Index() {
       <View style={styles.introContainer}>
         <WelcomeModal />
         <Text style={styles.title}>trackr</Text>
-        <Text style={styles.subTitle}> Made by <Text style={{ fontWeight: 'medium' }}>JBruce</Text></Text>
+        <Text style={styles.subTitle}>Made by JBruce</Text>
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>Select a card game to get started <Ionicons name={'arrow-down-sharp'} color={'22668D'} size={24}></Ionicons></Text>
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
 
   subTitle: {
     color: '#FFFADD',
-    fontSize: 22,
+    fontFamily: 'Poppins-Medium',
+    fontSize: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
