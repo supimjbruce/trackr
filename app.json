@@ -32,7 +32,9 @@
         {
           "fonts":
           [
-            "./assets/fonts/Poppins-Black.ttf"
+            "./assets/fonts/Poppins-Black.ttf",
+            "./assets/fonts/Poppins-Medium.ttf",
+            "./assets/fonts/Poppins-SemiBold.ttf"
           ]
         }
       ]
