@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
   },
 
   playerOne: {
-    fontSize: 100,
+    fontFamily: 'Poppins-Black',
+    fontSize: 82,
     fontWeight: 900,
     color: "#FFFADD",
     alignSelf: "center",
@@ -111,7 +112,8 @@ const styles = StyleSheet.create({
       { rotateY: '-180deg' },
       { scaleY: -1 },
     ],
-    fontSize: 100,
+    fontFamily: 'Poppins-Black',
+    fontSize: 82,
     fontWeight: 900,
     color: "#FFFADD",
     alignSelf: "center",
