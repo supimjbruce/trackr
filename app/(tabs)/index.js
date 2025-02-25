@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
 
   title: {
     color: '#FFFADD',
+    fontFamily: 'Poppins-Black',
     fontSize: 96,
     fontWeight: '800',
     justifyContent: 'center',
