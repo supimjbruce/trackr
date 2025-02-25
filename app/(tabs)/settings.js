@@ -13,7 +13,9 @@ import React from 'react';
 export default function SettingsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Settings Screen</Text>
+      <View style={styles.settingsContainer}>
+        <Text style={styles.text}>Settings Screen</Text>
+      </View>
     </View>
   );
 }
@@ -22,10 +24,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#22668D',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
+
   text: {
-    color: '#FFFADD',
+    color: '#22668D',
+    fontFamily: 'Poppins-Black',
+    fontSize: 28,
+    padding: 15,
+  },
+
+  settingsContainer: {
+    flex: 1,
+    borderRadius: 15,
+    backgroundColor: '#FFCC70',
+    margin: 15,
   },
 });
