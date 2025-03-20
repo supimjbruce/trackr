@@ -12,6 +12,7 @@ import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import WelcomeModal from '../../components/WelcomeModal';
 //import { LinearGradient } from 'expo-linear-gradient';
+import { MyProvider, MyContext } from '../../components/MyContext';
 
 export default function Index() {
   /*const animatedValue = useRef(new Animated.Value(0)).current;
@@ -37,6 +38,7 @@ export default function Index() {
   }); // Thank you Google AI for your help with starting this :)*/
 
   return (
+    <MyProvider>
     <View style={styles.container}>
       <View style={styles.introContainer}>
         <WelcomeModal />
@@ -47,6 +49,7 @@ export default function Index() {
         <Text style={styles.footerText}>Select a card game to get started <Ionicons name={'arrow-down-sharp'} color={'22668D'} size={24}></Ionicons></Text>
       </View>
     </View>
+    </MyProvider>
   );
 }
 /* ^ Want to figure out how to better space the arrow so it's more in line with the text. */
