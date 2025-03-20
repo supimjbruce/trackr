@@ -14,17 +14,40 @@ import MagicLifeModal from '../../components/MagicLifeModal';
 
 export default function MagicGameplay() {
 
-  const {startingLifeTotal} = useContext(MyContext); // ✅ Get context
+  const {startingLifeTotal} = useContext(MyContext);
 
   const [yourLifeTotal, setYourLifeTotal] = useState(startingLifeTotal);
   const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(startingLifeTotal)
+  /*const losingLifeTotal = 0;
+  const [yourLifeTextColor, setYourLifeTextColor] = useState('');
+  const [opponentsLifeTextColor, setOpponentsLifeTextColor] = useState('');*/
 
-    // Update the life totals when startingLifeTotal from context changes
+
     // CHATGPT FOR THE WIN! I used it to help me understand the context and get this part working!
     useEffect(() => {
       setYourLifeTotal(startingLifeTotal);
       setOpponentsLifeTotal(startingLifeTotal);
     }, [startingLifeTotal]);
+
+    {/* lorcana.js "Lose The Game" Code */}
+    /*useEffect(() => {
+      if (opponentsLifeTotal == losingLifeTotal) {
+        setOpponentsLifeTextColor('red');
+        setYourLifeTextColor('green');
+      } else {
+        setOpponentsLifeTextColor('#FFFADD');
+      }
+    }, [opponentsLifeTotal]);
+   
+    useEffect(() => {
+      if (yourLifeTotal == losingLifeTotal) {
+        setYourLifeTextColor('red');
+        setOpponentsLifeTextColor('green');
+      } else {
+        setYourLifeTextColor('#FFFADD');
+      }
+    }, [yourLifeTotal]);*/ //<-- Need to fix this code, I want the '0' to start on a normal color and only
+    // go to red or green if the player loses or wins.
 
   const minusYourLife = () => {
     setYourLifeTotal((previousStartingLifeTotal) => Math.max(0, previousStartingLifeTotal - 1));
@@ -44,7 +67,7 @@ export default function MagicGameplay() {
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
               <View style={styles.lifeTotalCentered}>
-                <Text style={styles.playerTwo}>{opponentsLifeTotal}</Text>
+                <Text style={[styles.playerTwo/*, {color: opponentsLifeTextColor}*/]}>{opponentsLifeTotal}</Text>
               </View>
               <Pressable onPress={minusOpponenetsLife} style={styles.opponentMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
@@ -52,14 +75,14 @@ export default function MagicGameplay() {
             </View>
           </View>
         </View>
-        <Text>Value from Context: {startingLifeTotal}</Text>
+        {/*<Text>Value from Context: {startingLifeTotal}</Text> <-- Context Test Code */}
         <View>
           <View>
           <View style={styles.flexDirectionRow}>
               <Pressable onPress={minusYourLife} style={styles.yourMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
-              <Text style={styles.playerOne}>{yourLifeTotal}</Text>
+              <Text style={[styles.playerOne/*, {color: opponentsLifeTextColor}*/]}>{yourLifeTotal}</Text>
               <Pressable onPress={() => setYourLifeTotal(yourLifeTotal + 1)} style={styles.yourPlusButton}>
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
