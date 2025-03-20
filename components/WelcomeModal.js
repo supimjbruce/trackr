@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     },
 
     modalTitle: {
+      fontFamily: 'Poppins-Black',
       color: '#FFFADD',
       fontSize: 64,
       fontWeight: '800',
@@ -66,6 +67,8 @@ const styles = StyleSheet.create({
     },
 
     modalParagraphTitle: {
+      fontFamily: 'Poppins-Medium',
+      fontSize: 16,
       textAlign: 'center',
     },
 
