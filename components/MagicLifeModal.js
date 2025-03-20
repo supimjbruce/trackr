@@ -8,27 +8,36 @@ jbruce.design
 - - - - - */
 
 import {View, Text, Modal, Pressable, StyleSheet, TouchableOpacity} from "react-native";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { MyContext, MyProvider } from "./MyContext";
 
 export default function MagicLifeModal() {
+
+  const { startingLifeTotal, setStartingLifeTotal } = useContext(MyContext);
+
   const [modalVisible, setModalVisible] = useState(true);
 
-  const [startingLifeTotal, setStartingLifeTotal] = useState(0);
+  const updateLifeTotal = (newLife) => {
+    setStartingLifeTotal(newLife); // ✅ Update the global state
+    setModalVisible(false); // Close modal after updating
+  };
+
   const [yourLifeTotal, setYourLifeTotal] = useState(0);
   const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
 
-  const handleLifePress20 = () => {
-    setStartingLifeTotal(20);
+  /*const handleLifePress20 = () => {
+    setStartingLifeTotal(useContext(20));
     setModalVisible(false);
   };
 
   const handleLifePress40 = () => {
     setStartingLifeTotal(40);
     setModalVisible(false);
-  };
+  };*/
 
   return (
+    <MyProvider>
     <View style={styles.container}>
       <Modal
         animationType="fade"
@@ -44,10 +53,10 @@ export default function MagicLifeModal() {
                 <Ionicons name={'close-outline'} color="#000" size={30}></Ionicons>
             </TouchableOpacity>*/}
             <View style={styles.lifeButtonRow}>
-                <Pressable onPress={handleLifePress20} style={styles.lifeButton}>
+                <Pressable onPress={() => updateLifeTotal(20)} style={styles.lifeButton}>
                     <Text style={styles.lifeButtonTitle}>20</Text>
                 </Pressable>
-                <Pressable onPress={handleLifePress40} style={styles.lifeButton}>
+                <Pressable onPress={() => updateLifeTotal(40)} style={styles.lifeButton}>
                     <Text style={styles.lifeButtonTitle}>40</Text>
                 </Pressable>
             </View>
@@ -55,6 +64,7 @@ export default function MagicLifeModal() {
         </View>
       </Modal>
     </View>
+    </MyProvider>
   );
 }
 
