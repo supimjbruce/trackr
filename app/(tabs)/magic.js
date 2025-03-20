@@ -8,21 +8,23 @@ jbruce.design
 - - - - - */
 
 import {View, Text, StyleSheet, Pressable} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {MyContext} from '../../components/MyContext';
-import {MyProvider} from '../../components/MyContext';
 import MagicLifeModal from '../../components/MagicLifeModal';
 
 export default function MagicGameplay() {
-  const [startingLifeTotal, setStartingLifeTotal] = useState(0);
-  const [yourLifeTotal, setYourLifeTotal] = useState(0);
-  const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
 
-  const handleLifeUpdate = () => {
-    setStartingLifeTotal(MyContext);
-    setYourLifeTotal(MyContext);
-    setOpponentsLifeTotal(MyContext);
-  };
+  const {startingLifeTotal} = useContext(MyContext); // ✅ Get context
+
+  const [yourLifeTotal, setYourLifeTotal] = useState(startingLifeTotal);
+  const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(startingLifeTotal)
+
+    // Update the life totals when startingLifeTotal from context changes
+    // CHATGPT FOR THE WIN! I used it to help me understand the context and get this part working!
+    useEffect(() => {
+      setYourLifeTotal(startingLifeTotal);
+      setOpponentsLifeTotal(startingLifeTotal);
+    }, [startingLifeTotal]);
 
   const minusYourLife = () => {
     setYourLifeTotal((previousStartingLifeTotal) => Math.max(0, previousStartingLifeTotal - 1));
@@ -33,12 +35,11 @@ export default function MagicGameplay() {
   };
 
   return (
-    <MyProvider>
       <View style={styles.container}>
         <View>
           <View>
             <View style={styles.flexDirectionRow}>
-            <MagicLifeModal />
+              <MagicLifeModal />
               <Pressable onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)} style={styles.opponentPlusButton}>
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
@@ -66,7 +67,6 @@ export default function MagicGameplay() {
           </View>
           </View>
         </View>
-    </MyProvider>
   );
 }
 
