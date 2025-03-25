@@ -7,28 +7,57 @@ jbruce.design
 .j.
 - - - - - */
 
-import {Text, View, StyleSheet, Button} from 'react-native';
+import {Text, View, StyleSheet, Pressable, Button, Alert} from 'react-native';
 import React from 'react';
 
 export default function SettingsScreen() {
+
+  const settingChangeColor_PlayerOne = () => {
+    Alert.alert('Hello!');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.settingsContainer}>
-        <Text style={styles.text}>Settings Screen</Text>
+        <Text style={styles.titleText}>Settings Screen</Text>
           <View style={styles.dividerLine}/>
 
           <View>
-            <Text>Magic Player One Color</Text>
-            <Button></Button>
-            <Text>Magic Player Two Color</Text>
-            <Button></Button>
+            <Text style={styles.subTitle}>Magic Player One Color</Text>
+            <View style={styles.settingsBox}>
+              <View>
+                <Pressable onPress={() => alert('You have changed the Player One Color!')}>
+                  <Text style={styles.settingsColor}>Input Color Here</Text>
+                </Pressable>
+              </View>
+            </View>
+            <Text style={styles.subTitle}>Magic Player Two Color</Text>
+            <View style={styles.settingsBox}>
+              <View>
+                <Pressable onPress={() => alert('You have changed the Player Two Color!')}>
+                  <Text style={styles.settingsColor}>Input Color Here</Text>
+                </Pressable>
+              </View>
+            </View>
           </View>
 
           <View>
-            <Text>Lorcana Player One Color</Text>
-            <Button></Button>
-            <Text>Lorcana Player Two Color</Text>
-            <Button></Button>
+            <Text style={styles.subTitle}>Lorcana Player One Color</Text>
+            <View style={styles.settingsBox}>
+              <View>
+                <Pressable onPress={() => alert('You have changed the Player One Color!')}>
+                  <Text style={styles.settingsColor}>Input Color Here</Text>
+                </Pressable>
+              </View>
+            </View>
+            <Text style={styles.subTitle}>Lorcana Player Two Color</Text>
+            <View style={styles.settingsBox}>
+              <View>
+                <Pressable onPress={() => alert('You have changed the Player Two Color!')}>
+                  <Text style={styles.settingsColor}>Input Color Here</Text>
+                </Pressable>
+              </View>
+            </View>
           </View>
 
           <View>
@@ -53,11 +82,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#22668D',
   },
 
-  text: {
+  titleText: {
     color: '#22668D',
     fontFamily: 'Poppins-Black',
     fontSize: 28,
     padding: 15,
+  },
+
+  subTitle: {
+    color: '#FFFADD',
+    fontFamily: 'Poppins-Medium',
+    fontSize: 20,
+    paddingLeft: 15,
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   settingsContainer: {
@@ -67,9 +106,27 @@ const styles = StyleSheet.create({
     margin: 15,
   },
 
+  settingsBox: {
+    height: '30%',
+    width: '30%',
+    backgroundColor: '#8ECDDD',
+    marginTop: 5,
+    marginLeft: 15,
+    marginBottom: 5,
+    borderRadius: 11,
+    alignItems: 'center',
+  },
+
+  settingsColor: {
+    fontFamily: 'Poppins-Medium',
+    color: 'white',
+    padding: 10,
+    textAlign: 'left',
+  },
+
   dividerLine: {
     backgroundColor: '#FFFADD',
-    height: 15,
+    height: 10,
     marginLeft: 20,
     marginRight: 20,
     marginBottom: 20,
