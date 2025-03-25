@@ -48,6 +48,7 @@ export default function MagicLifeModal() {
       {/*<Text>Value from context: {startingLifeTotal}</Text> <- Need to fix this context */}
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
+            {/*<Text style={styles.trackrModalTitle}>Magic</Text>*/}
             <Text style={styles.modalTitle}>What life do you<br></br>want to start at?</Text>
             {/*<TouchableOpacity onPress={() => setModalVisible(false)}>
                 <Ionicons name={'close-outline'} color="#000" size={30}></Ionicons>
@@ -61,6 +62,19 @@ export default function MagicLifeModal() {
                 </Pressable>
             </View>
           </View>
+          {/*<View> // Idea for a View below the Life Modal that shows quickly how to play
+          and use the app.
+            <Text style={styles.modalTitle}>How to Play</Text>
+            <View>
+              <Text>Standard</Text>
+              <Text>Description</Text>
+            </View>
+            <View>
+              <Text>Commander</Text>
+              <Text>Description</Text>
+            </View>
+            <Text>Thank you for playing and for using trackr!</Text>
+          </View>*/}
         </View>
       </Modal>
     </View>
@@ -99,6 +113,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
   },
+
+  /*trackrModalTitle: {
+    fontFamily: 'Poppins-Black',
+    color: '#FFFADD',
+    fontSize: 44,
+    fontWeight: '800',
+    paddingBottom: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  },*/
+
   lifeButtonRow: {
     flex: 1,
     flexDirection: 'row',
