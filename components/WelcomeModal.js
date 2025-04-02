@@ -14,7 +14,7 @@ const [isModalVisible, setModalVisible] = useState(true);
           onRequestClose={() => setModalVisible(false)}
         >
           <View style={styles.modalContainer}>
-            <View style={styles.modalContent} w>
+            <View style={styles.modalContent}>
               <Text style={styles.modalTitle}>trackr</Text>
               <Text style={styles.modalParagraphTitle}>Welcome to trackr, a simple app for tracking<br></br>life totals for trading card games.</Text>
               <br></br>
