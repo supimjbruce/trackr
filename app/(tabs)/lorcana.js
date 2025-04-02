@@ -9,6 +9,7 @@ jbruce.design
 
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import React, {useState, useEffect} from 'react';
+import LorcanaModal from '../../components/LorcanaModal';
 
 export default function LorcanaGameplay() {
   const [yourLoreTotal, setYourLoreTotal] = useState(0);
@@ -68,6 +69,7 @@ export default function LorcanaGameplay() {
         <View>
           <View>
             <View style={styles.flexDirectionRow}>
+              <LorcanaModal />
               <Pressable onPress={plusOponenetsLore} style={styles.opponentPlusButton}>
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
