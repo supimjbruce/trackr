@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Modal, Pressable} from 'react-native';
+import {View, Text, StyleSheet, Modal, Pressable, Linking} from 'react-native';
 
 const WelcomeModal = () => {
 
@@ -16,9 +16,9 @@ const [isModalVisible, setModalVisible] = useState(true);
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
               <Text style={styles.modalTitle}>trackr</Text>
-              <Text style={styles.modalParagraphTitle}>Welcome to trackr, a simple app for tracking<br></br>life totals for trading card games.</Text>
+              <Text style={styles.modalParagraphTitle}>Welcome to trackr, a free, lightweight and open source <br></br> life tracking app for Magic The Gathering.</Text>
               <br></br>
-              <Text style={styles.modalParagraphTitle}><b>Current support for:</b><br></br>Magic The Gathering<br></br>Lorcana</Text>
+              <Text style={styles.modalParagraphTitle}>Created by <b>Jonathan Bruce</b> <br></br><Text onPress={() => {Linking.openURL('http://www.github.com/supimjbruce/')}}><i>(@supimjbruce)</i></Text></Text>
               <View style={styles.buttonAlign}>
                 <Pressable style={styles.closeButton} onPress={() => setModalVisible(false)}>
                   <Text style={styles.closeButtonText}>Close</Text>
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     },
 
     closeButtonText: {
+      fontFamily: 'Poppins-Medium',
       fontSize: 16,
       textAlign: 'center',
     },
