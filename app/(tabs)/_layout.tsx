@@ -38,16 +38,16 @@ export default function TabLayout() {
           ),
         }} /* Down the road, I would love to add a custom icon of the Magic The Gathering logo for this */
       />
-      <Tabs.Screen
+      {/*<Tabs.Screen
         name="lorcana"
         options={{
           title: 'Lorcana',
           tabBarIcon: ({color, focused}) => (
             <Ionicons name={focused ? 'flash-sharp' : 'flash-outline'} color={color} size={24} />
           ),
-        }} /* Down the road, I would love to add a custom icon of the Lorcana logo for this */
+        }} // Down the road, I would love to add a custom icon of the Lorcana logo for this.
       />
-      <Tabs.Screen
+      {/*<Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
@@ -55,7 +55,7 @@ export default function TabLayout() {
             <Ionicons name={focused ? 'settings-sharp' : 'settings-outline'} color={color} size={24} />
           ),
         }}
-      />
+      />*/}
     </Tabs>
   );
 }
