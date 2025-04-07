@@ -72,6 +72,7 @@ export default function MagicGameplay() {
               <Pressable onPress={minusOpponenetsLife} style={styles.opponentMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
+              {/*Should I change this to TouchableOpacity so that the viewer has some feedback when the button is pressed/*/}
             </View>
           </View>
         </View>
