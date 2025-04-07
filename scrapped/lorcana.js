@@ -9,7 +9,7 @@ jbruce.design
 
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import LorcanaModal from '../../components/LorcanaModal';
+import LorcanaModal from './LorcanaModal';
 
 export default function LorcanaGameplay() {
   const [yourLoreTotal, setYourLoreTotal] = useState(0);
