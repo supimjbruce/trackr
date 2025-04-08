@@ -56,9 +56,11 @@ export default function MagicLifeModal() {
             <View style={styles.lifeButtonRow}>
                 <Pressable onPress={() => updateLifeTotal(20)} style={styles.lifeButton}>
                     <Text style={styles.lifeButtonTitle}>20</Text>
+                    <Text style={styles.formatSubtitle}>(Standard)</Text>
                 </Pressable>
                 <Pressable onPress={() => updateLifeTotal(40)} style={styles.lifeButton}>
                     <Text style={styles.lifeButtonTitle}>40</Text>
+                    <Text style={styles.formatSubtitle}>(Commander)</Text>
                 </Pressable>
             </View>
           </View>
@@ -88,6 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -95,6 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.6)', // Black background with 50% opacity
     // Thank you Google Search AI for helping with this code :)
   },
+
   modalContent: {
     maxHeight: '40%',
     maxWidth: '85%',
@@ -104,6 +108,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
   },
+
   modalTitle: {
     fontFamily: 'Poppins-SemiBold',
     color: '#22668D',
@@ -131,18 +136,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   lifeButton: {
     backgroundColor: '#8ECDDD',
     borderRadius: 23,
     padding: 20,
     margin: 15,
   },
+
   lifeButtonTitle: {
     color: '#FFFADD',
+    fontFamily: 'Poppins-Black',
     fontSize: 56,
     fontWeight: '900', /* I would like this to be more Ultra, like the Figma design */
     justifyContent: 'center',
     alignItems: 'center',
+    textAlign: 'center',
+  },
+
+  formatSubtitle: {
+    fontFamily: 'Poppins-Medium',
+    color: '#FFFADD',
+    fontSize: 16,
+    marginTop: -7.5,
     textAlign: 'center',
   },
 });
