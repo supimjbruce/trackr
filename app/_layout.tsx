@@ -15,7 +15,7 @@ export default function RootLayout() {
     <MyProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="+not-found" options={{ headerShown: false }} />
       </Stack>
     </MyProvider>
   );
