@@ -7,36 +7,12 @@ jbruce.design
 .j.
 - - - - - */
 
-import {View, Text, StyleSheet, Animated} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import WelcomeModal from '../../components/WelcomeModal';
-//import { LinearGradient } from 'expo-linear-gradient';
-import { MyProvider, MyContext } from '../../components/MyContext';
+import {MyProvider} from '../../components/MyContext';
 
 export default function Index() {
-  /*const animatedValue = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    Animated.sequence([
-      Animated.timing(animatedValue, {
-        toValue: 1,
-        duration: 5000,
-        useNativeDriver: false,
-      }),
-      (animatedValue, {
-        toValue: 0,
-        duration: 5000,
-        useNativeDriver: false,
-      }),
-    ]).start();
-  });
-
-  const interpolateColors = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['#22668D', '#FFCC70'], // Replace with your desired colors
-  }); // Thank you Google AI for your help with starting this :)*/
-
   return (
     <MyProvider>
     <View style={styles.container}>
