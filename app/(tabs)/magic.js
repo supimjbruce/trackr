@@ -7,7 +7,7 @@ jbruce.design
 .j.
 - - - - - */
 
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {View, Text, StyleSheet, Pressable, Button} from 'react-native';
 import React, {useState, useContext, useEffect} from 'react';
 import {MyContext} from '../../components/MyContext';
 import MagicLifeModal from '../../components/MagicLifeModal';
@@ -19,6 +19,16 @@ export default function MagicGameplay() {
   /*const losingLifeTotal = 0;
   const [yourLifeTextColor, setYourLifeTextColor] = useState('');
   const [opponentsLifeTextColor, setOpponentsLifeTextColor] = useState('');*/
+
+  const [thirdPlayerVisibility, setThirdPlayerVisibility] = useState(false);
+  const [fourthPlayerVisibility, setFourthPlayerVisibility] = useState(false);
+
+  const toggleThirdPlayerVisibility = () => {
+    setThirdPlayerVisibility(!thirdPlayerVisibility);
+  };
+  const toggleFourthPlayerVisibility = () => {
+    setFourthPlayerVisibility(!fourthPlayerVisibility);
+  };
 
     useEffect(() => {
       setYourLifeTotal(startingLifeTotal);
@@ -72,6 +82,14 @@ export default function MagicGameplay() {
             </View>
           </View>
         </View>
+        <View>
+          <Button title={thirdPlayerVisibility ? 'Hide View' : 'Show View'} onPress={toggleThirdPlayerVisibility} />
+          {thirdPlayerVisibility && (
+            <View style={{ marginTop: 20, backgroundColor: 'lightblue', padding: 10 }}>
+              <Text>Third Player</Text>
+            </View>
+          )}
+        </View> {/*Need to keep working on this, make a modal for choosing how many players (2, 3 or 4 currently)*/}
         {/*<Text>Value from Context: {startingLifeTotal}</Text> <-- Context Test Code */}
         <View>
           <View>
