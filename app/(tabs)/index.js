@@ -7,7 +7,7 @@ jbruce.design
 .j.
 - - - - - */
 
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import React from 'react';
 import WelcomeModal from '../../components/WelcomeModal';
 import {MyProvider} from '../../components/MyContext';
@@ -15,19 +15,13 @@ import {MyProvider} from '../../components/MyContext';
 export default function Index() {
   return (
     <MyProvider>
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.introContainer}>
         <WelcomeModal />
         <Text style={styles.title}>trackr</Text>
         <Text style={styles.subTitle}>A free, lightweight, open source life tracking<br></br> app for Magic The Gathering</Text>
       </View>
-      {/*<View style={styles.footer}>
-        <Text style={styles.footerText}>Select a card game to get started <Ionicons name={'arrow-down-sharp'} color={'22668D'} size={24}></Ionicons></Text>
-      </View>
-      
-      // ^ Want to figure out how to better space the arrow so it's more in line with the text.
-      // Figure out how to add inline padding to the V/arrow, or make the 'v' an Arrow.*/}
-    </View>
+    </SafeAreaView>
     </MyProvider>
   );
 }
