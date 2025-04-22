@@ -7,7 +7,7 @@ jbruce.design
 .j.
 - - - - - */
 
-import {View, Text, StyleSheet, Pressable, Button} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView, Pressable, Button} from 'react-native';
 import React, {useState, useContext, useEffect} from 'react';
 import {MyContext} from '../../components/MyContext';
 import MagicLifeModal from '../../components/MagicLifeModal';
@@ -64,7 +64,7 @@ export default function MagicGameplay() {
   };
 
   return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View>
           <View>
             <View style={styles.flexDirectionRow}>
@@ -78,19 +78,26 @@ export default function MagicGameplay() {
               <Pressable onPress={minusOpponenetsLife} style={styles.opponentMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
+              <View>
+                <Button title={thirdPlayerVisibility ? 'Hide Third Player' : 'Show Third Player'} onPress={toggleThirdPlayerVisibility} />
+                {thirdPlayerVisibility && (
+                  <View style={[styles.flexDirectionRow, {marginLeft: 30}]}>
+                    <Pressable onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)} style={styles.opponentPlusButton}>
+                      <Text style={styles.buttonTextStyling}>+</Text>
+                    </Pressable>
+                    <View style={styles.lifeTotalCentered}>
+                      <Text style={[styles.playerTwo/*, {color: opponentsLifeTextColor}*/]}>{opponentsLifeTotal}</Text>
+                    </View>
+                    <Pressable onPress={minusOpponenetsLife} style={styles.opponentMinusButton}>
+                      <Text style={styles.buttonTextStyling}>-</Text>
+                    </Pressable>
+                  </View>
+                )}
+              </View>
               {/*Should I change this to TouchableOpacity so that the viewer has some feedback when the button is pressed/*/}
             </View>
           </View>
         </View>
-        <View>
-          <Button title={thirdPlayerVisibility ? 'Hide View' : 'Show View'} onPress={toggleThirdPlayerVisibility} />
-          {thirdPlayerVisibility && (
-            <View style={{ marginTop: 20, backgroundColor: 'lightblue', padding: 10 }}>
-              <Text>Third Player</Text>
-            </View>
-          )}
-        </View> {/*Need to keep working on this, make a modal for choosing how many players (2, 3 or 4 currently)*/}
-        {/*<Text>Value from Context: {startingLifeTotal}</Text> <-- Context Test Code */}
         <View>
           <View>
           <View style={styles.flexDirectionRow}>
@@ -104,7 +111,7 @@ export default function MagicGameplay() {
             </View>
           </View>
           </View>
-        </View>
+        </SafeAreaView>
   );
 }
 
