@@ -1,3 +1,12 @@
+/* trackr */
+/* Welcome Modal [WelcomeModal.js] */
+
+/*By Jonathan Bruce
+JBruce, LLC
+jbruce.design
+.j.
+- - - - - */
+
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Modal, Pressable, Linking} from 'react-native';
 
