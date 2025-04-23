@@ -1,3 +1,12 @@
+/* trackr */
+/* My Context [MyContext.js] */
+
+/*By Jonathan Bruce
+JBruce, LLC
+jbruce.design
+.j.
+- - - - - */
+
 import React, { createContext, useState } from 'react';
 
 export const MyContext = createContext({});
