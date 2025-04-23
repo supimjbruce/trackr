@@ -1,5 +1,5 @@
 /* trackr */
-/* Home Page [index.js] */
+/* Magic Life Modal [MagicLifeModal.js] */
 
 /*By Jonathan Bruce
 JBruce, LLC
