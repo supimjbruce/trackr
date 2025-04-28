@@ -11,28 +11,31 @@ import {View, Text, StyleSheet, SafeAreaView, Pressable, Button} from 'react-nat
 import React, {useState, useContext, useEffect} from 'react';
 import {MyContext} from '../../components/MyContext';
 import MagicLifeModal from '../../components/MagicLifeModal';
+import PlayerCountModal from '../../components/PlayerCountModal';
 
 export default function MagicGameplay() {
-  const {startingLifeTotal} = useContext(MyContext);
-  const [yourLifeTotal, setYourLifeTotal] = useState(startingLifeTotal);
-  const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(startingLifeTotal)
+  const {
+    startingLifeTotal,
+    setStartingLifeTotal,
+    thirdPlayerVisibility,
+    setThirdPlayerVisibility,
+    fourthPlayerVisibility,
+    setFourthPlayerVisibility,
+  } = useContext(MyContext);
+  const [playerOneLifeTotal, setP1LifeTotal] = useState(startingLifeTotal);
+  const [playerTwoLifeTotal, setP2LifeTotal] = useState(startingLifeTotal);
+  const [playerThreeLifeTotal, setP3LifeTotal] = useState(startingLifeTotal);
+  const [playerFourLifeTotal, setP4LifeTotal] = useState(startingLifeTotal);
+
   /*const losingLifeTotal = 0;
   const [yourLifeTextColor, setYourLifeTextColor] = useState('');
   const [opponentsLifeTextColor, setOpponentsLifeTextColor] = useState('');*/
 
-  const [thirdPlayerVisibility, setThirdPlayerVisibility] = useState(false);
-  const [fourthPlayerVisibility, setFourthPlayerVisibility] = useState(false);
-
-  const toggleThirdPlayerVisibility = () => {
-    setThirdPlayerVisibility(!thirdPlayerVisibility);
-  };
-  const toggleFourthPlayerVisibility = () => {
-    setFourthPlayerVisibility(!fourthPlayerVisibility);
-  };
-
     useEffect(() => {
-      setYourLifeTotal(startingLifeTotal);
-      setOpponentsLifeTotal(startingLifeTotal);
+      setP1LifeTotal(startingLifeTotal);
+      setP2LifeTotal(startingLifeTotal);
+      setP3LifeTotal(startingLifeTotal);
+      setP4LifeTotal(startingLifeTotal);
     }, [startingLifeTotal]);
 
     {/* lorcana.js "Lose The Game" Code */}
@@ -69,26 +72,26 @@ export default function MagicGameplay() {
           <View>
             <View style={styles.flexDirectionRow}>
               <MagicLifeModal />
-              <Pressable onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)} style={styles.opponentPlusButton}>
+              <PlayerCountModal />
+              <Pressable onPress={() => setP2LifeTotal(playerTwoLifeTotal + 1)} style={styles.topRowPlusButton}>
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
               <View style={styles.lifeTotalCentered}>
-                <Text style={[styles.playerTwo/*, {color: opponentsLifeTextColor}*/]}>{opponentsLifeTotal}</Text>
+                <Text style={styles.topPlayer}>{playerTwoLifeTotal}</Text>
               </View>
-              <Pressable onPress={minusOpponenetsLife} style={styles.opponentMinusButton}>
+              <Pressable onPress={() => setP2LifeTotal(playerTwoLifeTotal - 1)} style={styles.topRowMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
               <View>
-                <Button title={thirdPlayerVisibility ? 'Hide Third Player' : 'Show Third Player'} onPress={toggleThirdPlayerVisibility} />
                 {thirdPlayerVisibility && (
                   <View style={[styles.flexDirectionRow, {marginLeft: 30}]}>
-                    <Pressable onPress={() => setOpponentsLifeTotal(opponentsLifeTotal + 1)} style={styles.opponentPlusButton}>
+                    <Pressable onPress={() => setP3LifeTotal(playerThreeLifeTotal + 1)} style={styles.topRowPlusButton}>
                       <Text style={styles.buttonTextStyling}>+</Text>
                     </Pressable>
                     <View style={styles.lifeTotalCentered}>
-                      <Text style={[styles.playerTwo/*, {color: opponentsLifeTextColor}*/]}>{opponentsLifeTotal}</Text>
+                      <Text style={styles.topPlayer}>{playerThreeLifeTotal}</Text>
                     </View>
-                    <Pressable onPress={minusOpponenetsLife} style={styles.opponentMinusButton}>
+                    <Pressable onPress={() => setP3LifeTotal(playerThreeLifeTotal - 1)} style={styles.topRowMinusButton}>
                       <Text style={styles.buttonTextStyling}>-</Text>
                     </Pressable>
                   </View>
@@ -101,13 +104,26 @@ export default function MagicGameplay() {
         <View>
           <View>
           <View style={styles.flexDirectionRow}>
-              <Pressable onPress={minusYourLife} style={styles.yourMinusButton}>
+              <Pressable onPress={() => setP1LifeTotal(playerOneLifeTotal - 1)} style={styles.bottomRowMinusButton}>
                 <Text style={styles.buttonTextStyling}>-</Text>
               </Pressable>
-              <Text style={[styles.playerOne/*, {color: opponentsLifeTextColor}*/]}>{yourLifeTotal}</Text>
-              <Pressable onPress={() => setYourLifeTotal(yourLifeTotal + 1)} style={styles.yourPlusButton}>
+              <Text style={styles.bottomPlayer}>{playerOneLifeTotal}</Text>
+              <Pressable onPress={() => setP1LifeTotal(playerOneLifeTotal + 1)} style={styles.bottomRowPlusButton}>
                 <Text style={styles.buttonTextStyling}>+</Text>
               </Pressable>
+              {fourthPlayerVisibility && (
+                  <View style={[styles.flexDirectionRow, {marginLeft: 30}]}>
+                    <Pressable onPress={() => setP4LifeTotal(playerFourLifeTotal - 1)} style={styles.bottomRowMinusButton}>
+                      <Text style={styles.buttonTextStyling}>-</Text>
+                    </Pressable>
+                    <View style={styles.lifeTotalCentered}>
+                      <Text style={styles.bottomPlayer}>{playerFourLifeTotal}</Text>
+                    </View>
+                    <Pressable onPress={() => setP4LifeTotal(playerFourLifeTotal + 1)} style={styles.bottomRowPlusButton}>
+                      <Text style={styles.buttonTextStyling}>+</Text>
+                    </Pressable>
+                  </View>
+                )}
             </View>
           </View>
           </View>
@@ -134,7 +150,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  playerOne: {
+  bottomPlayer: {
     fontFamily: 'Poppins-Black',
     fontSize: 82,
     fontWeight: 900,
@@ -152,7 +168,7 @@ const styles = StyleSheet.create({
     fontVariant: ['tabular-nums'],
   },
 
-  playerTwo: {
+  topPlayer: {
     transform: [
       { rotateY: '-180deg' },
       { scaleY: -1 },
@@ -177,7 +193,6 @@ const styles = StyleSheet.create({
   lifeTotalCentered: {
     alignItems: 'center',
     justifyContent: 'center',
-
   },
 
   buttonTextStyling: {
@@ -188,7 +203,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
   },
 
-  yourPlusButton: {
+  bottomRowPlusButton: {
     height: 50,
     width: 50,
     backgroundColor: '#8ECDDD',
@@ -197,7 +212,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
   },
 
-  yourMinusButton: {
+  bottomRowMinusButton: {
     height: 50,
     width: 50,
     backgroundColor: '#8ECDDD',
@@ -206,7 +221,7 @@ const styles = StyleSheet.create({
     marginRight: 25,
   },
 
-  opponentPlusButton: {
+  topRowPlusButton: {
     height: 50,
     width: 50,
     backgroundColor: '#8ECDDD',
@@ -219,7 +234,7 @@ const styles = StyleSheet.create({
     marginRight: 25,
   },
 
-  opponentMinusButton: {
+  topRowMinusButton: {
     height: 50,
     width: 50,
     backgroundColor: '#8ECDDD',
