@@ -14,8 +14,14 @@ import { MyContext, MyProvider } from "./MyContext";
 
 export default function MagicLifeModal() {
 
-  const { startingLifeTotal, setStartingLifeTotal } = useContext(MyContext);
-
+  const {
+        startingLifeTotal,
+        setStartingLifeTotal,
+        thirdPlayerVisibility,
+        setThirdPlayerVisibility,
+        fourthPlayerVisibility,
+        setFourthPlayerVisibility,
+  } = useContext(MyContext);
   const [modalVisible, setModalVisible] = useState(true);
 
   const updateLifeTotal = (newLife) => {
@@ -25,16 +31,6 @@ export default function MagicLifeModal() {
 
   const [yourLifeTotal, setYourLifeTotal] = useState(0);
   const [opponentsLifeTotal, setOpponentsLifeTotal] = useState(0);
-
-  /*const handleLifePress20 = () => {
-    setStartingLifeTotal(useContext(20));
-    setModalVisible(false);
-  };
-
-  const handleLifePress40 = () => {
-    setStartingLifeTotal(40);
-    setModalVisible(false);
-  };*/
 
   return (
     <MyProvider>
