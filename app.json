@@ -22,9 +22,14 @@
       },
       "package": "com.anonymous.trackr"
     },
+    "experiments": {
+      "baseUrl": "/trackr/app.html"
+    },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
     },
+    "homepage": "/my-app",
     "plugins": [
       "expo-router",
       [
