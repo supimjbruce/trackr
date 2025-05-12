@@ -28,15 +28,14 @@
       "build": {
         "publicPath": "/trackr/my-app/"
       },
-      "homepage": "/trackr/my-app/"
+      "homepage": "https://supimjbruce.github.io/trackr/my-app/"
     },
     "plugins": [
       "expo-router",
       [
         "expo-font",
         {
-          "fonts":
-          [
+          "fonts": [
             "./assets/fonts/Poppins-Black.ttf",
             "./assets/fonts/Poppins-Medium.ttf",
             "./assets/fonts/Poppins-SemiBold.ttf"
