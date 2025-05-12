@@ -22,9 +22,6 @@
       },
       "package": "com.anonymous.trackr"
     },
-    "experiments": {
-      "baseUrl": "/trackr/my-app"
-    },
     "web": {
       "bundler": "metro",
       "favicon": "./assets/favicon.png"
