@@ -23,13 +23,13 @@
       "package": "com.anonymous.trackr"
     },
     "experiments": {
-      "baseUrl": "/trackr/app.html"
+      "baseUrl": "/trackr/my-app"
     },
     "web": {
       "bundler": "metro",
       "favicon": "./assets/favicon.png"
     },
-    "homepage": "/my-app",
+    "homepage": "/trackr/my-app/",
     "plugins": [
       "expo-router",
       [
