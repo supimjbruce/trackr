@@ -24,9 +24,12 @@
     },
     "web": {
       "bundler": "metro",
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "build": {
+        "publicPath": "/trackr/my-app/"
+      },
+      "homepage": "/trackr/my-app/"
     },
-    "homepage": "/trackr/my-app/",
     "plugins": [
       "expo-router",
       [
