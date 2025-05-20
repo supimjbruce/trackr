@@ -22,6 +22,11 @@
       },
       "package": "com.anonymous.trackr"
     },
+    "web": {
+      "build": {
+        "publicPath": "/trackr/my-app/"
+      }
+    },
     "experiments": {
       "baseUrl": "/trackr"
     },
