@@ -27,9 +27,6 @@
         "publicPath": "/trackr/my-app/"
       }
     },
-    "experiments": {
-      "baseUrl": "/trackr"
-    },
     "plugins": [
       "expo-router",
       [
