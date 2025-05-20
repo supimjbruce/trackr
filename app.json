@@ -22,12 +22,9 @@
       },
       "package": "com.anonymous.trackr"
     },
-    "web": {
-      "build": {
-        "publicPath": "/trackr/my-app/"
-      }
+    "experiments": {
+      "baseUrl": "/trackr"
     },
-    "homepage": "/trackr/my-app/",
     "plugins": [
       "expo-router",
       [
