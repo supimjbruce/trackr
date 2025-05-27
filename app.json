@@ -23,10 +23,9 @@
       "package": "com.anonymous.trackr"
     },
     "web": {
-      "favicon": "./assets/favicon.png",
-      "build": {
-        "publicPath": "/trackr/my-app/"
-      }
+      "bundler": "metro",
+      "output": "static",
+      "publicPath": "/trackr/my-app/"
     },
     "plugins": [
       "expo-router",
