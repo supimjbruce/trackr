@@ -23,7 +23,6 @@
       "package": "com.anonymous.trackr"
     },
     "web": {
-      "bundler": "metro",
       "favicon": "./assets/favicon.png",
       "build": {
         "publicPath": "/trackr/my-app/"
