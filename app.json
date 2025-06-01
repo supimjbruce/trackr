@@ -23,7 +23,7 @@
       "package": "com.anonymous.trackr"
     },
     "web": {
-      "bundler": "metro",
+      "bundler": "webpack",
       "output": "static",
       "publicPath": "/trackr/my-app/"
     },
@@ -39,7 +39,13 @@
           ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {
+        "basePath": "/trackr/my-app"
+      }
+    }
   }
 }
+
 
