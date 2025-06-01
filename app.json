@@ -50,7 +50,12 @@
       "router": {
         "basePath": "/trackr/my-app"
       }
-    }
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ]
   }
 }
 
