@@ -24,7 +24,7 @@
     },
     "web": {
       "bundler": "webpack",
-      "publicPath": "./",
+      "publicPath": "./app/",
       "prerender": {
         "routes": [
           "/",
