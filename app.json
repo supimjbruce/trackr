@@ -24,8 +24,6 @@
     },
     "web": {
       "bundler": "webpack",
-      "output": "static",
-      "publicPath": "/trackr/my-app/",
       "prerender": {
         "routes": [
           "/",
