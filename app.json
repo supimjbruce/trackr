@@ -24,11 +24,10 @@
     },
     "web": {
       "bundler": "webpack",
-      "publicPath": "./app/",
       "prerender": {
         "routes": [
-          "/",
-          "/magic"
+          "/(tabs)/",
+          "/(tabs)/magic"
         ]
       }
     },
@@ -44,16 +43,6 @@
           ]
         }
       ]
-    ],
-    "extra": {
-      "router": {
-        "basePath": "/trackr/my-app"
-      }
-    },
-    "platforms": [
-      "ios",
-      "android",
-      "web"
     ]
   }
 }
